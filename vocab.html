@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS 단어 학습 | IELTS VOCA</title>
+<meta name="description" content="IELTS 4,800개 필수 어휘를 무료로 학습하세요. Band 4.0~8.0 단어장, 플래시카드, 의미 퀴즈, SRS 간격 반복 복습.">
+<meta property="og:title" content="IELTS 단어 학습 - 무료 어휘 4,800개">
+<meta property="og:description" content="Band 4.0~8.0 IELTS 필수 어휘를 플래시카드와 퀴즈로 학습하세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --orange: #f97316;
+  --orange-light: #fff7ed;
+  --orange-glow: rgba(249,115,22,0.15);
+  --orange-deep: #ea580c;
+  --green: #34d399;
+  --green-deep: #059669;
+  --blue: #3b82f6;
+  --purple: #a78bfa;
+  --red: #ef4444;
+  --gray-50: #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-300: #d4d4d4;
+  --gray-400: #a3a3a3;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-800: #262626;
+  --gray-900: #171717;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  color: #fff;
+  background: var(--gray-900);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100svh;
+}
+
+.en { font-family: 'Outfit', sans-serif; }
+.hidden { display: none !important; }
+
+/* ─── Top bar ─── */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(23,23,23,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.top-bar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.top-bar-brand img { width: 28px; height: 28px; border-radius: 8px; }
+
+.top-bar-brand span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.top-bar-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.top-bar-link {
+  font-size: 0.82rem;
+  color: var(--gray-400);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.top-bar-link:hover { color: #fff; }
+
+/* ─── Background ─── */
+.bg-glow {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-glow-1 {
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: rgba(249,115,22,0.06);
+  filter: blur(100px);
+  top: -10%; right: -10%;
+}
+
+.bg-glow-2 {
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: rgba(59,130,246,0.04);
+  filter: blur(100px);
+  bottom: -10%; left: -10%;
+}
+
+/* ─── Screens ─── */
+.screen {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 24px 80px;
+}
+
+/* ─── Band Select ─── */
+.band-header {
+  text-align: center;
+  padding: 32px 0 8px;
+}
+
+.band-header-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+
+.band-header-title {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.band-header-desc {
+  font-size: 0.88rem;
+  color: var(--gray-400);
+  line-height: 1.6;
+}
+
+.band-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.band-btn {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #fff;
+}
+
+.band-btn:hover {
+  background: rgba(249,115,22,0.08);
+  border-color: rgba(249,115,22,0.3);
+  transform: translateY(-2px);
+}
+
+.band-btn-level {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.band-btn-count {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  font-weight: 500;
+}
+
+.band-btn-progress {
+  margin-top: 10px;
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.band-btn-bar {
+  height: 100%;
+  background: var(--orange);
+  border-radius: 2px;
+  transition: width 0.4s;
+}
+
+.band-total {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.82rem;
+  color: var(--gray-500);
+}
+
+.band-total strong {
+  color: var(--orange);
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ─── Dashboard ─── */
+.dash-band-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 6px;
+}
+
+.dash-title {
+  font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.dash-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.dash-stat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 16px 10px;
+  text-align: center;
+}
+
+.dash-stat-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  display: block;
+}
+
+.dash-stat-num.orange { color: var(--orange); }
+.dash-stat-num.blue { color: var(--blue); }
+.dash-stat-num.purple { color: var(--purple); }
+.dash-stat-num.green { color: var(--green); }
+
+.dash-stat-label {
+  font-size: 0.68rem;
+  color: var(--gray-400);
+  font-weight: 600;
+  margin-top: 4px;
+  display: block;
+}
+
+.dash-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dash-action {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #fff;
+}
+
+.dash-action:hover {
+  background: rgba(255,255,255,0.07);
+  transform: translateY(-2px);
+}
+
+.dash-action-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.dash-action-icon.learn { background: rgba(249,115,22,0.12); }
+.dash-action-icon.review { background: rgba(59,130,246,0.12); }
+.dash-action-icon.browse { background: rgba(167,139,250,0.12); }
+
+.dash-action-text { flex: 1; }
+
+.dash-action-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.dash-action-desc {
+  font-size: 0.78rem;
+  color: var(--gray-400);
+}
+
+.dash-action-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+
+.dash-action-badge.orange { background: rgba(249,115,22,0.15); color: var(--orange); }
+.dash-action-badge.blue { background: rgba(59,130,246,0.15); color: var(--blue); }
+
+.dash-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--gray-400);
+  cursor: pointer;
+  background: none;
+  border: none;
+  margin-bottom: 20px;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+
+.dash-back:hover { color: #fff; }
+.dash-back svg { width: 16px; height: 16px; }
+
+/* ─── Flashcard ─── */
+.learn-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.learn-progress {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.learn-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  transition: background 0.3s;
+}
+
+.learn-dot.done { background: var(--orange); }
+.learn-dot.active { background: var(--orange); box-shadow: 0 0 8px rgba(249,115,22,0.4); }
+
+.learn-count {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  color: var(--gray-400);
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.learn-close {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: var(--gray-400);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.learn-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.learn-close svg { width: 18px; height: 18px; }
+
+.flashcard-wrap {
+  perspective: 1000px;
+  margin-bottom: 24px;
+}
+
+.flashcard {
+  position: relative;
+  min-height: 340px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+}
+
+.flashcard.flipped { transform: rotateY(180deg); }
+
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+  overflow-y: auto;
+}
+
+.fc-pos {
+  font-size: 0.78rem;
+  color: var(--gray-400);
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.fc-word {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.fc-word-sm {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.fc-phonetic {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  color: var(--gray-400);
+  margin-bottom: 16px;
+}
+
+.fc-tap {
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--gray-500);
+}
+
+.fc-meaning-en {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.fc-meaning-ko {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.fc-example {
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  padding: 16px 18px;
+  border-left: 3px solid var(--orange);
+  margin-bottom: 16px;
+}
+
+.fc-example-en {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.fc-example-ko {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.4;
+}
+
+/* ─── Screening buttons ─── */
+.screen-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.screen-btn {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.screen-btn.know {
+  background: rgba(255,255,255,0.06);
+  color: var(--gray-300);
+}
+
+.screen-btn.know:hover { background: rgba(255,255,255,0.12); }
+
+.screen-btn.learn-it {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+}
+
+.screen-btn.learn-it:hover { background: var(--orange-deep); }
+
+/* ─── Quiz ─── */
+.quiz-question {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.quiz-word {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.quiz-pos {
+  font-size: 0.82rem;
+  color: var(--gray-400);
+  font-style: italic;
+}
+
+.quiz-prompt {
+  font-size: 0.88rem;
+  color: var(--gray-400);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.quiz-opts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quiz-opt {
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  font-family: inherit;
+}
+
+.quiz-opt:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+
+.quiz-opt.correct {
+  background: rgba(52,211,153,0.15);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.quiz-opt.wrong {
+  background: rgba(239,68,68,0.15);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* ─── SRS Rating ─── */
+.rate-btns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.rate-btn {
+  padding: 12px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: var(--gray-300);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  font-family: inherit;
+}
+
+.rate-btn:hover { background: rgba(255,255,255,0.1); }
+
+.rate-label {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--gray-500);
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.rate-btn.q0 { border-color: rgba(239,68,68,0.3); }
+.rate-btn.q0:hover { background: rgba(239,68,68,0.1); }
+.rate-btn.q1 { border-color: rgba(249,115,22,0.3); }
+.rate-btn.q1:hover { background: rgba(249,115,22,0.1); }
+.rate-btn.q2 { border-color: rgba(52,211,153,0.3); }
+.rate-btn.q2:hover { background: rgba(52,211,153,0.1); }
+.rate-btn.q3 { border-color: rgba(59,130,246,0.3); }
+.rate-btn.q3:hover { background: rgba(59,130,246,0.1); }
+
+/* ─── Browse ─── */
+.browse-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.browse-search {
+  flex: 1;
+  min-width: 180px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  font-size: 0.88rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.browse-search:focus { border-color: var(--orange); }
+.browse-search::placeholder { color: var(--gray-500); }
+
+.browse-filter {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.browse-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.browse-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.browse-item:hover { border-color: rgba(255,255,255,0.12); }
+
+.browse-item-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+}
+
+.browse-item-word {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  flex: 1;
+}
+
+.browse-item-meaning {
+  font-size: 0.82rem;
+  color: var(--gray-400);
+  flex: 1;
+  text-align: right;
+}
+
+.browse-item-status {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.browse-item-status.st-new { background: rgba(255,255,255,0.06); color: var(--gray-400); }
+.browse-item-status.st-learning { background: rgba(249,115,22,0.15); color: var(--orange); }
+.browse-item-status.st-review { background: rgba(59,130,246,0.15); color: var(--blue); }
+.browse-item-status.st-mastered { background: rgba(52,211,153,0.15); color: var(--green); }
+.browse-item-status.st-skipped { background: rgba(167,139,250,0.1); color: var(--purple); }
+
+.browse-item-detail {
+  display: none;
+  padding: 0 18px 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.browse-item.open .browse-item-detail { display: block; }
+
+.browse-detail-row {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  font-size: 0.82rem;
+}
+
+.browse-detail-label {
+  color: var(--gray-500);
+  font-weight: 600;
+  min-width: 50px;
+  flex-shrink: 0;
+}
+
+.browse-detail-val {
+  color: rgba(255,255,255,0.75);
+  line-height: 1.45;
+}
+
+.browse-detail-val.en { font-family: 'Outfit', sans-serif; }
+
+.browse-skip-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: var(--gray-300);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.browse-skip-btn:hover { background: rgba(255,255,255,0.1); }
+.browse-skip-btn.skipped { background: rgba(167,139,250,0.1); color: var(--purple); border-color: rgba(167,139,250,0.3); }
+
+.browse-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--gray-500);
+  font-size: 0.88rem;
+}
+
+.browse-load-more {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.browse-load-more button {
+  padding: 10px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  color: var(--gray-400);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.browse-load-more button:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+/* ─── Session Summary ─── */
+.summary {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.summary-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.summary-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.summary-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.summary-stat { text-align: center; }
+
+.summary-stat-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  display: block;
+}
+
+.summary-stat-num.green { color: var(--green); }
+.summary-stat-num.red { color: var(--red); }
+.summary-stat-num.orange { color: var(--orange); }
+
+.summary-stat-label {
+  font-size: 0.72rem;
+  color: var(--gray-400);
+  margin-top: 4px;
+}
+
+.summary-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.summary-btn {
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  border: none;
+}
+
+.summary-btn.primary { background: var(--orange); color: #fff; }
+.summary-btn.primary:hover { background: var(--orange-deep); }
+.summary-btn.secondary { background: rgba(255,255,255,0.06); color: var(--gray-300); border: 1px solid rgba(255,255,255,0.1); }
+.summary-btn.secondary:hover { background: rgba(255,255,255,0.1); }
+
+/* ─── App CTA ─── */
+.app-cta {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-cta-icon { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; }
+.app-cta-text { flex: 1; }
+.app-cta-text strong { display: block; font-size: 0.88rem; margin-bottom: 2px; }
+.app-cta-text span { font-size: 0.75rem; color: var(--gray-400); }
+
+.app-cta-btn {
+  display: inline-flex;
+  padding: 10px 18px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 12px rgba(249,115,22,0.3);
+}
+
+.app-cta-btn:hover { transform: translateY(-1px); }
+
+/* ─── Loading ─── */
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--gray-500);
+}
+
+.loading-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid rgba(255,255,255,0.08);
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Mobile ─── */
+@media (max-width: 500px) {
+  .band-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .band-btn { padding: 16px 12px; }
+  .band-btn-level { font-size: 1.1rem; }
+  .dash-stats { grid-template-columns: repeat(2, 1fr); }
+  .rate-btns { grid-template-columns: repeat(2, 1fr); }
+  .flashcard { min-height: 300px; }
+  .fc-word { font-size: 1.8rem; }
+  .app-cta { flex-wrap: wrap; }
+  .app-cta-btn { width: 100%; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- Top bar -->
+<div class="top-bar">
+  <a href="./" class="top-bar-brand">
+    <img src="icon_512.png" alt="IELTS VOCA" width="28" height="28">
+    <span class="en">IELTS VOCA</span>
+  </a>
+  <div class="top-bar-links">
+    <a href="daily.html" class="top-bar-link">데일리</a>
+    <a href="./" class="top-bar-link">메인으로</a>
+  </div>
+</div>
+
+<!-- Screen: Band Select -->
+<div id="screenBand" class="screen">
+  <div class="band-header">
+    <div class="band-header-label en">IELTS Vocabulary</div>
+    <h1 class="band-header-title">IELTS 단어 학습</h1>
+    <p class="band-header-desc">4,798개 IELTS 필수 어휘를 밴드별로 학습하세요.<br>SRS 간격 반복으로 효과적으로 암기합니다.</p>
+  </div>
+  <div class="band-grid" id="bandGrid"></div>
+  <div class="band-total">전체 <strong class="en">4,798</strong>개 단어 · 진도는 브라우저에 자동 저장됩니다</div>
+</div>
+
+<!-- Screen: Dashboard -->
+<div id="screenDash" class="screen hidden">
+  <button class="dash-back" id="dashBackBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+    밴드 선택
+  </button>
+  <div class="dash-band-label en" id="dashBandLabel"></div>
+  <h2 class="dash-title" id="dashTitle"></h2>
+  <div class="dash-stats" id="dashStats"></div>
+  <div class="dash-actions" id="dashActions"></div>
+  <div class="app-cta">
+    <img class="app-cta-icon" src="icon_512.png" alt="IELTS VOCA" width="44" height="44">
+    <div class="app-cta-text">
+      <strong>발음 연습, 타이핑 게임 등</strong>
+      <span>앱에서 더 다양한 학습을 경험하세요</span>
+    </div>
+    <a href="https://play.google.com/store/apps/details?id=com.young.ielts_prep" class="app-cta-btn" target="_blank" rel="noopener">앱 다운로드</a>
+  </div>
+</div>
+
+<!-- Screen: Learn -->
+<div id="screenLearn" class="screen hidden">
+  <div class="learn-header">
+    <div class="learn-progress" id="learnProgress"></div>
+    <button class="learn-close" id="learnCloseBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="learnContent"></div>
+</div>
+
+<!-- Screen: Review -->
+<div id="screenReview" class="screen hidden">
+  <div class="learn-header">
+    <div class="learn-progress" id="reviewProgress"></div>
+    <button class="learn-close" id="reviewCloseBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="reviewContent"></div>
+</div>
+
+<!-- Screen: Browse -->
+<div id="screenBrowse" class="screen hidden">
+  <button class="dash-back" id="browseBackBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+    대시보드
+  </button>
+  <h2 class="dash-title" id="browseTitle"></h2>
+  <div class="browse-controls">
+    <input type="text" class="browse-search" id="browseSearch" placeholder="단어 검색...">
+    <select class="browse-filter" id="browseFilter">
+      <option value="all">전체</option>
+      <option value="new">새 단어</option>
+      <option value="learning">학습중</option>
+      <option value="review">복습</option>
+      <option value="mastered">마스터</option>
+      <option value="skipped">건너뜀</option>
+    </select>
+  </div>
+  <div class="browse-list" id="browseList"></div>
+  <div class="browse-load-more hidden" id="browseMore">
+    <button id="browseMoreBtn">더 보기</button>
+  </div>
+</div>
+
+<script>
+// ─── DOM Helpers (safe, no innerHTML) ───
+function ce(tag, cls, text) {
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined && text !== null) e.textContent = text;
+  return e;
+}
+
+function clear(el) { while (el.firstChild) el.removeChild(el.firstChild); }
+
+function ap(parent) {
+  for (var i = 1; i < arguments.length; i++) {
+    if (arguments[i]) parent.appendChild(arguments[i]);
+  }
+  return parent;
+}
+
+// ─── SRS Engine (ported from srs.ts) ───
+function calculateNextReview(card, quality) {
+  var ef = card.ef, iv = card.iv, rp = card.rp;
+  if (quality === 0) {
+    rp = 0; iv = 0;
+  } else {
+    var q = quality + 2;
+    ef = Math.max(1.3, ef + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
+    if (rp === 0) iv = 1;
+    else if (rp === 1) iv = 3;
+    else iv = Math.round(iv * ef);
+    rp += 1;
+  }
+  var d = new Date();
+  d.setDate(d.getDate() + iv);
+  var nr = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  return { ef: Math.round(ef * 100) / 100, iv: iv, rp: rp, nr: nr };
+}
+
+function getStatus(iv, rp) {
+  if (rp === 0) return 'new';
+  if (iv < 7) return 'learning';
+  if (iv < 30) return 'review';
+  return 'mastered';
+}
+
+function todayStr() {
+  var d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
+// ─── Storage ───
+var STORAGE_KEY = 'ielts_vocab_srs';
+var _progress = null;
+var _saveTimer = null;
+
+function loadProgress() {
+  if (_progress) return _progress;
+  try {
+    var raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) _progress = JSON.parse(raw);
+  } catch(e) {}
+  if (!_progress) _progress = { version: 1, words: {}, stats: { streak: 0, lastStudyDate: '', totalStudied: 0 } };
+  return _progress;
+}
+
+function saveProgress() {
+  if (_saveTimer) clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(function() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(_progress)); } catch(e) {}
+  }, 500);
+}
+
+function saveNow() {
+  if (_saveTimer) clearTimeout(_saveTimer);
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(_progress)); } catch(e) {}
+}
+
+document.addEventListener('visibilitychange', function() { if (document.hidden) saveNow(); });
+window.addEventListener('beforeunload', saveNow);
+
+function getWordState(word) {
+  var p = loadProgress();
+  return p.words[word] || null;
+}
+
+function updateWordState(word, quality) {
+  var p = loadProgress();
+  var cur = p.words[word] || { ef: 2.5, iv: 0, rp: 0, cc: 0, ic: 0, sk: false };
+  var res = calculateNextReview(cur, quality);
+  cur.ef = res.ef;
+  cur.iv = res.iv;
+  cur.rp = res.rp;
+  cur.nr = res.nr;
+  if (quality >= 2) cur.cc = (cur.cc || 0) + 1;
+  else cur.ic = (cur.ic || 0) + 1;
+  p.words[word] = cur;
+  var today = todayStr();
+  if (p.stats.lastStudyDate !== today) {
+    if (p.stats.lastStudyDate) {
+      var diff = Math.round((new Date(today) - new Date(p.stats.lastStudyDate)) / 86400000);
+      p.stats.streak = diff === 1 ? p.stats.streak + 1 : 1;
+    } else {
+      p.stats.streak = 1;
+    }
+    p.stats.lastStudyDate = today;
+  }
+  p.stats.totalStudied = Object.keys(p.words).filter(function(k) { return p.words[k].rp > 0; }).length;
+  saveProgress();
+}
+
+function markSkipped(word, skip) {
+  var p = loadProgress();
+  if (!p.words[word]) p.words[word] = { ef: 2.5, iv: 0, rp: 0, cc: 0, ic: 0, sk: false };
+  p.words[word].sk = skip;
+  saveProgress();
+}
+
+// ─── Data Layer ───
+var _bandCache = {};
+var BAND_COUNTS = { '4.0':752, '4.5':419, '5.0':468, '5.5':585, '6.0':511, '6.5':281, '7.0':363, '7.5':611, '8.0':808 };
+var BANDS = ['4.0','4.5','5.0','5.5','6.0','6.5','7.0','7.5','8.0'];
+
+function loadBand(band, cb) {
+  if (_bandCache[band]) return cb(_bandCache[band]);
+  fetch('data/band_' + band + '.json').then(function(r) { return r.json(); }).then(function(data) {
+    _bandCache[band] = data;
+    cb(data);
+  }).catch(function() {
+    try {
+      var cached = localStorage.getItem('ielts_vocab_data_' + band);
+      if (cached) { _bandCache[band] = JSON.parse(cached); cb(_bandCache[band]); return; }
+    } catch(e) {}
+    cb([]);
+  });
+}
+
+function cacheBandOffline(band) {
+  if (!_bandCache[band]) return;
+  try { localStorage.setItem('ielts_vocab_data_' + band, JSON.stringify(_bandCache[band])); } catch(e) {}
+}
+
+function getBandStats(band) {
+  var words = _bandCache[band] || [];
+  var p = loadProgress();
+  var today = todayStr();
+  var stats = { total: words.length, newW: 0, learning: 0, review: 0, mastered: 0, due: 0, skipped: 0 };
+  for (var i = 0; i < words.length; i++) {
+    var ws = p.words[words[i].w];
+    if (!ws || ws.rp === 0) {
+      if (ws && ws.sk) stats.skipped++;
+      else stats.newW++;
+    } else {
+      var st = getStatus(ws.iv, ws.rp);
+      if (st === 'learning') stats.learning++;
+      else if (st === 'review') stats.review++;
+      else stats.mastered++;
+      if (ws.nr && ws.nr <= today) stats.due++;
+    }
+  }
+  return stats;
+}
+
+// ─── UI State ───
+var currentBand = null;
+
+function showScreen(name) {
+  ['screenBand','screenDash','screenLearn','screenReview','screenBrowse'].forEach(function(id) {
+    document.getElementById(id).classList.add('hidden');
+  });
+  var map = { band: 'Band', dash: 'Dash', learn: 'Learn', review: 'Review', browse: 'Browse' };
+  document.getElementById('screen' + map[name]).classList.remove('hidden');
+  window.scrollTo(0, 0);
+}
+
+// ─── Band Select ───
+function renderBandGrid() {
+  var grid = document.getElementById('bandGrid');
+  clear(grid);
+  BANDS.forEach(function(b) {
+    var btn = ce('div', 'band-btn');
+    btn.addEventListener('click', function() { selectBand(b); });
+    ap(btn, ce('span', 'band-btn-level en', b), ce('span', 'band-btn-count', BAND_COUNTS[b] + '개'));
+    var prog = ce('div', 'band-btn-progress');
+    prog.id = 'bandProg' + b.replace('.','');
+    ap(prog, ce('div', 'band-btn-bar'));
+    ap(btn, prog);
+    grid.appendChild(btn);
+  });
+}
+
+function selectBand(band) {
+  currentBand = band;
+  showScreen('dash');
+  document.getElementById('dashBandLabel').textContent = 'Band ' + band;
+  document.getElementById('dashTitle').textContent = 'Band ' + band + ' 단어 학습';
+  var statsEl = document.getElementById('dashStats');
+  clear(statsEl);
+  var ld = ce('div', 'loading');
+  ap(ld, ce('div', 'loading-spinner'), ce('div', null, '로딩 중...'));
+  statsEl.appendChild(ld);
+  clear(document.getElementById('dashActions'));
+  loadBand(band, function() {
+    cacheBandOffline(band);
+    renderDashboard();
+    updateBandProgress(band);
+  });
+}
+
+function updateBandProgress(band) {
+  var stats = getBandStats(band);
+  var el = document.getElementById('bandProg' + band.replace('.',''));
+  if (el) {
+    var pct = stats.total > 0 ? Math.round((stats.mastered + stats.review) / stats.total * 100) : 0;
+    el.querySelector('.band-btn-bar').style.width = pct + '%';
+  }
+}
+
+function renderDashboard() {
+  var stats = getBandStats(currentBand);
+  var statsEl = document.getElementById('dashStats');
+  clear(statsEl);
+  var items = [
+    { num: stats.due, cls: 'orange', label: '오늘 복습' },
+    { num: stats.newW, cls: 'blue', label: '새 단어' },
+    { num: stats.learning, cls: 'purple', label: '학습중' },
+    { num: stats.mastered, cls: 'green', label: '마스터' }
+  ];
+  items.forEach(function(it) {
+    var d = ce('div', 'dash-stat');
+    ap(d, ce('span', 'dash-stat-num en ' + it.cls, String(it.num)), ce('span', 'dash-stat-label', it.label));
+    statsEl.appendChild(d);
+  });
+
+  var actEl = document.getElementById('dashActions');
+  clear(actEl);
+  ap(actEl,
+    makeAction('learn', '📖', '새 단어 학습', '플래시카드 + 의미 퀴즈', stats.newW > 0 ? stats.newW + '개' : '', 'orange', startLearnSession),
+    makeAction('review', '🔄', '복습하기', 'SRS 간격 반복 복습', stats.due > 0 ? stats.due + '개' : '', 'blue', startReviewSession),
+    makeAction('browse', '📋', '단어 목록', '전체 단어 보기 · 스크리닝', '', '', startBrowse)
+  );
+}
+
+function makeAction(iconCls, emoji, title, desc, badge, badgeCls, onclick) {
+  var div = ce('div', 'dash-action');
+  div.addEventListener('click', onclick);
+  var icon = ce('div', 'dash-action-icon ' + iconCls, emoji);
+  var txt = ce('div', 'dash-action-text');
+  ap(txt, ce('div', 'dash-action-title', title), ce('div', 'dash-action-desc', desc));
+  ap(div, icon, txt);
+  if (badge) {
+    var bg = ce('span', 'dash-action-badge ' + badgeCls, badge);
+    div.appendChild(bg);
+  }
+  return div;
+}
+
+// ─── Learn Mode ───
+var learnWords = [];
+var learnIdx = 0;
+var learnStep = 'card';
+var learnResults = { correct: 0, wrong: 0, skipped: 0 };
+
+function startLearnSession() {
+  var words = _bandCache[currentBand] || [];
+  var p = loadProgress();
+  var newW = words.filter(function(w) { var s = p.words[w.w]; return !s || (s.rp === 0 && !s.sk); });
+  learnWords = newW.slice(0, 10);
+  if (learnWords.length === 0) { alert('새로 학습할 단어가 없습니다.'); return; }
+  learnIdx = 0;
+  learnStep = 'card';
+  learnResults = { correct: 0, wrong: 0, skipped: 0 };
+  showScreen('learn');
+  renderLearnCard();
+}
+
+function renderProgress(elId, idx, total) {
+  var el = document.getElementById(elId);
+  clear(el);
+  var maxDots = Math.min(total, 15);
+  for (var i = 0; i < maxDots; i++) {
+    var dot = ce('div', 'learn-dot' + (i < idx ? ' done' : '') + (i === idx ? ' active' : ''));
+    el.appendChild(dot);
+  }
+  ap(el, ce('span', 'learn-count en', (idx + 1) + ' / ' + total));
+}
+
+function buildFlashcard(w, onFlip) {
+  var wrap = ce('div', 'flashcard-wrap');
+  var fc = ce('div', 'flashcard');
+  fc.addEventListener('click', function() { fc.classList.toggle('flipped'); if (onFlip) onFlip(); });
+
+  // Front
+  var front = ce('div', 'flashcard-face');
+  ap(front, ce('span', 'fc-pos', w.ps), ce('div', 'fc-word en', w.w), ce('div', 'fc-phonetic en', w.p), ce('div', 'fc-tap', '탭하여 뜻 보기'));
+
+  // Back
+  var back = ce('div', 'flashcard-face flashcard-back');
+  ap(back, ce('span', 'fc-pos', w.ps), ce('div', 'fc-word-sm en', w.w), ce('div', 'fc-meaning-en en', w.me), ce('div', 'fc-meaning-ko', w.mk));
+  var ex = ce('div', 'fc-example');
+  ap(ex, ce('div', 'fc-example-en en', w.ex), ce('div', 'fc-example-ko', w.et));
+  ap(back, ex);
+
+  ap(fc, front, back);
+  ap(wrap, fc);
+  return wrap;
+}
+
+function renderLearnCard() {
+  if (learnIdx >= learnWords.length) { renderLearnSummary(); return; }
+  renderProgress('learnProgress', learnIdx, learnWords.length);
+  var w = learnWords[learnIdx];
+  var ct = document.getElementById('learnContent');
+  clear(ct);
+
+  ct.appendChild(buildFlashcard(w));
+
+  var btns = ce('div', 'screen-btns');
+  var knowBtn = ce('button', 'screen-btn know', '이미 알아요');
+  knowBtn.addEventListener('click', function() { markSkipped(w.w, true); learnResults.skipped++; learnIdx++; renderLearnCard(); });
+  var learnBtn = ce('button', 'screen-btn learn-it', '학습하기');
+  learnBtn.addEventListener('click', function() { renderLearnQuiz(); });
+  ap(btns, knowBtn, learnBtn);
+  ct.appendChild(btns);
+}
+
+function renderLearnQuiz() {
+  renderProgress('learnProgress', learnIdx, learnWords.length);
+  var w = learnWords[learnIdx];
+  var ct = document.getElementById('learnContent');
+  clear(ct);
+
+  var q = ce('div', 'quiz-question');
+  ap(q, ce('div', 'quiz-word en', w.w), ce('div', 'quiz-pos', w.ps));
+  ct.appendChild(q);
+  ct.appendChild(ce('div', 'quiz-prompt', '올바른 뜻을 선택하세요'));
+
+  var allWords = _bandCache[currentBand] || [];
+  var distractors = getDistractors(w, allWords, 3);
+  var opts = shuffle([w.mk].concat(distractors));
+
+  var optsDiv = ce('div', 'quiz-opts');
+  var answered = false;
+  opts.forEach(function(opt) {
+    var btn = ce('button', 'quiz-opt', opt);
+    btn.addEventListener('click', function() {
+      if (answered) return;
+      answered = true;
+      var correct = opt === w.mk;
+      // Show correct answer
+      var allBtns = optsDiv.querySelectorAll('.quiz-opt');
+      allBtns.forEach(function(b) {
+        b.style.pointerEvents = 'none';
+        if (b.textContent === w.mk) b.classList.add('correct');
+      });
+      if (!correct) { btn.classList.add('wrong'); learnResults.wrong++; }
+      else { learnResults.correct++; }
+      setTimeout(function() { renderLearnRate(w, correct); }, correct ? 800 : 1500);
+    });
+    optsDiv.appendChild(btn);
+  });
+  ct.appendChild(optsDiv);
+}
+
+function renderLearnRate(word) {
+  renderProgress('learnProgress', learnIdx, learnWords.length);
+  var ct = document.getElementById('learnContent');
+  clear(ct);
+
+  var info = ce('div', null);
+  info.style.textAlign = 'center';
+  info.style.marginBottom = '20px';
+  ap(info, ce('div', 'fc-word-sm en', word.w), ce('div', 'quiz-prompt', word.mk));
+  ct.appendChild(info);
+  ct.appendChild(ce('div', 'quiz-prompt', '이 단어의 난이도를 평가해주세요'));
+
+  ct.appendChild(buildRateButtons(function(q) {
+    updateWordState(word.w, q);
+    learnIdx++;
+    renderLearnCard();
+  }));
+}
+
+function buildRateButtons(onRate) {
+  var btns = ce('div', 'rate-btns');
+  var ratings = [
+    { q: 0, text: '모르겠어요', cls: 'q0', label: '다시' },
+    { q: 1, text: '어려워요', cls: 'q1', label: '1일' },
+    { q: 2, text: '알겠어요', cls: 'q2', label: '3일' },
+    { q: 3, text: '쉬워요', cls: 'q3', label: '7일+' }
+  ];
+  ratings.forEach(function(r) {
+    var btn = ce('button', 'rate-btn ' + r.cls, r.text);
+    var lbl = ce('span', 'rate-label', r.label);
+    btn.appendChild(lbl);
+    btn.addEventListener('click', function() { onRate(r.q); });
+    btns.appendChild(btn);
+  });
+  return btns;
+}
+
+function renderLearnSummary() {
+  clear(document.getElementById('learnProgress'));
+  var ct = document.getElementById('learnContent');
+  clear(ct);
+
+  var div = ce('div', 'summary');
+  ap(div, ce('div', 'summary-icon', '🎉'), ce('div', 'summary-title', '학습 완료!'));
+
+  var stats = ce('div', 'summary-stats');
+  [{ n: learnResults.correct, c: 'green', l: '정답' }, { n: learnResults.wrong, c: 'red', l: '오답' }, { n: learnResults.skipped, c: 'orange', l: '건너뜀' }].forEach(function(s) {
+    var st = ce('div', 'summary-stat');
+    ap(st, ce('span', 'summary-stat-num en ' + s.c, String(s.n)), ce('div', 'summary-stat-label', s.l));
+    stats.appendChild(st);
+  });
+  div.appendChild(stats);
+
+  var acts = ce('div', 'summary-actions');
+  var btn1 = ce('button', 'summary-btn primary', '계속 학습하기');
+  btn1.addEventListener('click', startLearnSession);
+  var btn2 = ce('button', 'summary-btn secondary', '대시보드로');
+  btn2.addEventListener('click', function() { showScreen('dash'); renderDashboard(); });
+  ap(acts, btn1, btn2);
+  div.appendChild(acts);
+  ct.appendChild(div);
+}
+
+function endLearnSession() { showScreen('dash'); renderDashboard(); }
+
+// ─── Review Mode ───
+var reviewWords = [];
+var reviewIdx = 0;
+var reviewFlipped = false;
+var reviewResults = { correct: 0, wrong: 0 };
+
+function startReviewSession() {
+  var words = _bandCache[currentBand] || [];
+  var p = loadProgress();
+  var today = todayStr();
+  var due = words.filter(function(w) {
+    var s = p.words[w.w];
+    return s && s.rp > 0 && s.nr && s.nr <= today && !s.sk;
+  });
+  due.sort(function(a, b) { return (p.words[a.w].nr || '').localeCompare(p.words[b.w].nr || ''); });
+  reviewWords = due.slice(0, 20);
+  if (reviewWords.length === 0) { alert('오늘 복습할 단어가 없습니다.'); return; }
+  reviewIdx = 0;
+  reviewResults = { correct: 0, wrong: 0 };
+  showScreen('review');
+  renderReviewCard();
+}
+
+function renderReviewCard() {
+  if (reviewIdx >= reviewWords.length) { renderReviewSummary(); return; }
+  renderProgress('reviewProgress', reviewIdx, reviewWords.length);
+  var w = reviewWords[reviewIdx];
+  var ct = document.getElementById('reviewContent');
+  clear(ct);
+  reviewFlipped = false;
+
+  var wrap = buildFlashcard(w, function() {
+    if (!reviewFlipped) {
+      reviewFlipped = true;
+      ct.appendChild(buildRateButtons(function(q) {
+        updateWordState(w.w, q);
+        if (q >= 2) reviewResults.correct++;
+        else reviewResults.wrong++;
+        reviewIdx++;
+        renderReviewCard();
+      }));
+    }
+  });
+  ct.appendChild(wrap);
+}
+
+function renderReviewSummary() {
+  clear(document.getElementById('reviewProgress'));
+  var ct = document.getElementById('reviewContent');
+  clear(ct);
+
+  var div = ce('div', 'summary');
+  ap(div, ce('div', 'summary-icon', '✅'), ce('div', 'summary-title', '복습 완료!'));
+
+  var stats = ce('div', 'summary-stats');
+  [{ n: reviewResults.correct, c: 'green', l: '기억함' }, { n: reviewResults.wrong, c: 'red', l: '다시 학습' }].forEach(function(s) {
+    var st = ce('div', 'summary-stat');
+    ap(st, ce('span', 'summary-stat-num en ' + s.c, String(s.n)), ce('div', 'summary-stat-label', s.l));
+    stats.appendChild(st);
+  });
+  div.appendChild(stats);
+
+  var acts = ce('div', 'summary-actions');
+  var btn1 = ce('button', 'summary-btn primary', '계속 복습');
+  btn1.addEventListener('click', startReviewSession);
+  var btn2 = ce('button', 'summary-btn secondary', '대시보드로');
+  btn2.addEventListener('click', function() { showScreen('dash'); renderDashboard(); });
+  ap(acts, btn1, btn2);
+  div.appendChild(acts);
+  ct.appendChild(div);
+}
+
+function endReviewSession() { showScreen('dash'); renderDashboard(); }
+
+// ─── Browse Mode ───
+var browseVisible = 50;
+var browseFiltered = [];
+
+function startBrowse() {
+  browseVisible = 50;
+  document.getElementById('browseSearch').value = '';
+  document.getElementById('browseFilter').value = 'all';
+  document.getElementById('browseTitle').textContent = 'Band ' + currentBand + ' 단어 목록';
+  showScreen('browse');
+  filterBrowse();
+}
+
+function filterBrowse() {
+  var words = _bandCache[currentBand] || [];
+  var p = loadProgress();
+  var search = document.getElementById('browseSearch').value.toLowerCase();
+  var filter = document.getElementById('browseFilter').value;
+  browseFiltered = words.filter(function(w) {
+    if (search && w.w.toLowerCase().indexOf(search) === -1 && w.mk.indexOf(search) === -1) return false;
+    var s = p.words[w.w];
+    if (filter === 'all') return true;
+    if (filter === 'skipped') return s && s.sk;
+    if (filter === 'new') return !s || (s.rp === 0 && !s.sk);
+    var st = s ? getStatus(s.iv, s.rp) : 'new';
+    return st === filter;
+  });
+  browseVisible = 50;
+  renderBrowseList();
+}
+
+function renderBrowseList() {
+  var list = document.getElementById('browseList');
+  clear(list);
+  var p = loadProgress();
+  var show = browseFiltered.slice(0, browseVisible);
+  if (show.length === 0) {
+    list.appendChild(ce('div', 'browse-empty', '해당하는 단어가 없습니다.'));
+    document.getElementById('browseMore').classList.add('hidden');
+    return;
+  }
+  show.forEach(function(w) {
+    var s = p.words[w.w];
+    var status = 'new';
+    if (s && s.sk) status = 'skipped';
+    else if (s && s.rp > 0) status = getStatus(s.iv, s.rp);
+
+    var item = ce('div', 'browse-item');
+    var head = ce('div', 'browse-item-head');
+    head.addEventListener('click', function() { item.classList.toggle('open'); });
+    var wordSpan = ce('span', 'browse-item-word en', w.w);
+    var meanSpan = ce('span', 'browse-item-meaning', w.mk);
+    var stSpan = ce('span', 'browse-item-status st-' + status, statusLabel(status));
+    ap(head, wordSpan, meanSpan, stSpan);
+
+    var detail = ce('div', 'browse-item-detail');
+    var rows = [
+      { l: '발음', v: w.p, en: true },
+      { l: '품사', v: w.ps, en: false },
+      { l: '영영', v: w.me, en: true },
+      { l: '예문', v: w.ex, en: true },
+      { l: '해석', v: w.et, en: false }
+    ];
+    rows.forEach(function(r) {
+      var row = ce('div', 'browse-detail-row');
+      ap(row, ce('span', 'browse-detail-label', r.l), ce('span', 'browse-detail-val' + (r.en ? ' en' : ''), r.v));
+      detail.appendChild(row);
+    });
+
+    var skipBtn = ce('button', 'browse-skip-btn' + (s && s.sk ? ' skipped' : ''), s && s.sk ? '건너뜀 해제' : '이미 알아요 (건너뛰기)');
+    skipBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isSkipped = s && s.sk;
+      markSkipped(w.w, !isSkipped);
+      s = loadProgress().words[w.w];
+      skipBtn.className = 'browse-skip-btn' + (s && s.sk ? ' skipped' : '');
+      skipBtn.textContent = s && s.sk ? '건너뜀 해제' : '이미 알아요 (건너뛰기)';
+      var newSt = s && s.sk ? 'skipped' : (s && s.rp > 0 ? getStatus(s.iv, s.rp) : 'new');
+      stSpan.className = 'browse-item-status st-' + newSt;
+      stSpan.textContent = statusLabel(newSt);
+    });
+    detail.appendChild(skipBtn);
+
+    ap(item, head, detail);
+    list.appendChild(item);
+  });
+
+  document.getElementById('browseMore').classList.toggle('hidden', browseFiltered.length <= browseVisible);
+}
+
+function loadMoreBrowse() {
+  browseVisible += 50;
+  renderBrowseList();
+}
+
+function statusLabel(st) {
+  return { 'new': 'NEW', 'learning': '학습중', 'review': '복습', 'mastered': '마스터', 'skipped': '건너뜀' }[st] || st;
+}
+
+// ─── Helpers ───
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+function getDistractors(word, allWords, count) {
+  var samePOS = allWords.filter(function(w) { return w.mk !== word.mk && w.ps === word.ps; });
+  var others = allWords.filter(function(w) { return w.mk !== word.mk && w.ps !== word.ps; });
+  var pool = samePOS.length >= count ? samePOS : samePOS.concat(others);
+  var shuffled = shuffle(pool);
+  var result = [];
+  var used = {};
+  for (var i = 0; i < shuffled.length && result.length < count; i++) {
+    if (!used[shuffled[i].mk]) {
+      result.push(shuffled[i].mk);
+      used[shuffled[i].mk] = true;
+    }
+  }
+  return result;
+}
+
+function debounce(fn, ms) {
+  var timer;
+  return function() { clearTimeout(timer); timer = setTimeout(fn, ms); };
+}
+
+// ─── Event Listeners ───
+document.getElementById('dashBackBtn').addEventListener('click', function() { showScreen('band'); });
+document.getElementById('learnCloseBtn').addEventListener('click', endLearnSession);
+document.getElementById('reviewCloseBtn').addEventListener('click', endReviewSession);
+document.getElementById('browseBackBtn').addEventListener('click', function() { showScreen('dash'); });
+document.getElementById('browseMoreBtn').addEventListener('click', loadMoreBrowse);
+document.getElementById('browseSearch').addEventListener('input', debounce(filterBrowse, 300));
+document.getElementById('browseFilter').addEventListener('change', filterBrowse);
+
+// ─── Init ───
+loadProgress();
+renderBandGrid();
+</script>
+
+</body>
+</html>
