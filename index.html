@@ -692,15 +692,15 @@ body {
 
 .compare-table td:first-child { font-weight: 600; color: var(--gray-800); }
 
-/* ─── Daily Expression ─── */
-.daily-expression {
+/* ─── Daily Teaser ─── */
+.daily-teaser {
   padding: 80px 24px;
   background: var(--gray-900);
   position: relative;
   overflow: hidden;
 }
 
-.daily-expression::before {
+.daily-teaser::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -710,14 +710,14 @@ body {
   pointer-events: none;
 }
 
-.daily-inner {
+.daily-teaser-inner {
   position: relative;
   max-width: 640px;
   margin: 0 auto;
   text-align: center;
 }
 
-.daily-label {
+.daily-teaser-label {
   font-family: 'Outfit', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
@@ -727,128 +727,94 @@ body {
   margin-bottom: 10px;
 }
 
-.daily-title {
+.daily-teaser-title {
   font-size: clamp(1.3rem, 3.5vw, 1.8rem);
   font-weight: 900;
   color: #fff;
-  margin-bottom: 36px;
+  margin-bottom: 14px;
 }
 
-.daily-card {
+.daily-teaser-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+
+.daily-teaser-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 500px) { .daily-teaser-cards { grid-template-columns: 1fr; } }
+
+.daily-teaser-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 24px;
-  padding: 40px 36px;
+  border-radius: 20px;
+  padding: 28px 24px;
   text-align: left;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(8px);
 }
 
-.daily-card::before {
+.daily-teaser-card::before {
   content: '';
   position: absolute;
-  top: -60px; right: -60px;
-  width: 180px; height: 180px;
+  top: -40px; right: -40px;
+  width: 120px; height: 120px;
   border-radius: 50%;
-  background: var(--orange);
-  opacity: 0.04;
+  opacity: 0.05;
   pointer-events: none;
 }
 
-.daily-meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
+.daily-teaser-card.word-preview::before { background: var(--orange); }
+.daily-teaser-card.colloc-preview::before { background: var(--green); }
 
-.daily-band {
+.dtc-tag {
   font-family: 'Outfit', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 100px;
-  background: rgba(249,115,22,0.15);
-  color: var(--orange);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
 }
 
-.daily-pos {
-  font-size: 0.78rem;
-  color: var(--gray-400);
-  font-weight: 500;
-  font-style: italic;
-}
+.word-preview .dtc-tag { color: var(--orange); }
+.colloc-preview .dtc-tag { color: var(--green); }
 
-.daily-word {
+.dtc-word {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(2rem, 6vw, 3rem);
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
   font-weight: 900;
   color: #fff;
-  letter-spacing: -1px;
-  line-height: 1.1;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-.daily-meaning {
-  font-size: 1.1rem;
-  color: rgba(255,255,255,0.7);
-  font-weight: 400;
-  margin-bottom: 24px;
+.dtc-meaning {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.5);
 }
 
-.daily-example {
-  background: rgba(255,255,255,0.04);
+.daily-teaser-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-deep) 100%);
+  color: #fff;
   border-radius: 14px;
-  padding: 20px 22px;
-  border-left: 3px solid var(--orange);
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 6px 24px rgba(249,115,22,0.3);
 }
 
-.daily-example .ex-en {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.9);
-  font-weight: 500;
-  line-height: 1.55;
-  margin-bottom: 8px;
-}
-
-.daily-example .ex-ko {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.5;
-}
-
-.daily-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 28px;
-}
-
-.daily-nav button {
-  width: 40px; height: 40px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.04);
-  color: rgba(255,255,255,0.6);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, color 0.2s;
-}
-
-.daily-nav button:hover { background: rgba(255,255,255,0.1); color: #fff; }
-.daily-nav button svg { width: 16px; height: 16px; }
-
-.daily-counter {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.8rem;
-  color: var(--gray-400);
-  font-weight: 600;
-}
+.daily-teaser-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(249,115,22,0.4); }
+.daily-teaser-btn svg { width: 18px; height: 18px; }
 
 /* ─── Features ─── */
 .features {
@@ -1497,141 +1463,7 @@ footer a:hover { color: #fff; }
   .phone-frame { width: 220px; }
   .compare-table { font-size: 0.8rem; }
   .compare-table th, .compare-table td { padding: 10px 14px; }
-  .colloc-card { padding: 32px 28px; }
   .linker-table th, .linker-table td { padding: 10px 14px; font-size: 0.8rem; }
-}
-
-/* ─── Daily Collocation ─── */
-.daily-collocation {
-  padding: 0 24px 80px;
-  background: var(--gray-900);
-  position: relative;
-}
-
-.colloc-inner {
-  position: relative;
-  max-width: 640px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.colloc-label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 10px;
-}
-
-.colloc-title {
-  font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-  font-weight: 900;
-  color: #fff;
-  margin-bottom: 36px;
-}
-
-.colloc-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 24px;
-  padding: 40px 36px;
-  text-align: left;
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(8px);
-}
-
-.colloc-card::before {
-  content: '';
-  position: absolute;
-  top: -60px; left: -60px;
-  width: 180px; height: 180px;
-  border-radius: 50%;
-  background: var(--green);
-  opacity: 0.04;
-  pointer-events: none;
-}
-
-.colloc-phrase {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(1.6rem, 5vw, 2.4rem);
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: -0.5px;
-  line-height: 1.2;
-  margin-bottom: 8px;
-}
-
-.colloc-meaning {
-  font-size: 1rem;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 20px;
-}
-
-.colloc-examples {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.colloc-ex {
-  background: rgba(255,255,255,0.04);
-  border-radius: 14px;
-  padding: 16px 18px;
-}
-
-.colloc-ex.correct { border-left: 3px solid var(--green); }
-.colloc-ex.wrong { border-left: 3px solid #ef4444; }
-
-.colloc-ex-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-}
-
-.colloc-ex.correct .colloc-ex-label { color: var(--green); }
-.colloc-ex.wrong .colloc-ex-label { color: #ef4444; }
-
-.colloc-ex p {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.92rem;
-  color: rgba(255,255,255,0.85);
-  line-height: 1.5;
-}
-
-.colloc-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 28px;
-}
-
-.colloc-nav button {
-  width: 40px; height: 40px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.04);
-  color: rgba(255,255,255,0.6);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, color 0.2s;
-}
-
-.colloc-nav button:hover { background: rgba(255,255,255,0.1); color: #fff; }
-.colloc-nav button svg { width: 16px; height: 16px; }
-
-.colloc-counter {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.8rem;
-  color: var(--gray-400);
-  font-weight: 600;
 }
 
 /* ─── Linkers Table ─── */
@@ -1862,6 +1694,7 @@ footer a:hover { color: #fff; }
     <span class="en">IELTS VOCA</span>
   </a>
   <ul class="nav-links">
+    <li><a href="#daily">데일리 영어</a></li>
     <li><a href="#guide">시험 가이드</a></li>
     <li><a href="#features">학습 기능</a></li>
     <li><a href="#bands">밴드 가이드</a></li>
@@ -1878,6 +1711,7 @@ footer a:hover { color: #fff; }
 </nav>
 
 <div class="nav-mobile-menu" id="navMobile">
+  <a href="#daily" onclick="closeMobile()">데일리 영어</a>
   <a href="#guide" onclick="closeMobile()">시험 가이드</a>
   <a href="#features" onclick="closeMobile()">학습 기능</a>
   <a href="#bands" onclick="closeMobile()">밴드 가이드</a>
@@ -2062,63 +1896,28 @@ footer a:hover { color: #fff; }
   </div>
 </section>
 
-<!-- Daily Expression -->
-<section class="daily-expression">
-  <div class="daily-inner reveal">
-    <div class="daily-label en">Word of the Day</div>
-    <h2 class="daily-title">오늘의 IELTS 표현</h2>
-    <div class="daily-card" id="dailyCard">
-      <div class="daily-meta">
-        <span class="daily-band en" id="dailyBand"></span>
-        <span class="daily-pos" id="dailyPos"></span>
+<!-- Daily English Teaser -->
+<section class="daily-teaser" id="daily">
+  <div class="daily-teaser-inner reveal">
+    <div class="daily-teaser-label en">Daily IELTS English</div>
+    <h2 class="daily-teaser-title">매일 새로운 IELTS 영어</h2>
+    <p class="daily-teaser-desc">IELTS 고빈도 어휘와 콜로케이션을 매일 하나씩 학습하세요.<br>북마크에 추가하면 매일 바로 확인할 수 있습니다.</p>
+    <div class="daily-teaser-cards">
+      <div class="daily-teaser-card word-preview">
+        <div class="dtc-tag en">Word of the Day</div>
+        <div class="dtc-word en" id="teaserWord"></div>
+        <div class="dtc-meaning" id="teaserWordMeaning"></div>
       </div>
-      <div class="daily-word en" id="dailyWord"></div>
-      <div class="daily-meaning" id="dailyMeaning"></div>
-      <div class="daily-example">
-        <div class="ex-en" id="dailyExEn"></div>
-        <div class="ex-ko" id="dailyExKo"></div>
-      </div>
-    </div>
-    <div class="daily-nav">
-      <button onclick="changeWord(-1)" aria-label="이전">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <span class="daily-counter" id="dailyCounter"></span>
-      <button onclick="changeWord(1)" aria-label="다음">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- Daily Collocation -->
-<section class="daily-collocation">
-  <div class="colloc-inner reveal">
-    <div class="colloc-label en">Collocation of the Day</div>
-    <h2 class="colloc-title">오늘의 콜로케이션</h2>
-    <div class="colloc-card" id="collocCard">
-      <div class="colloc-phrase en" id="collocPhrase"></div>
-      <div class="colloc-meaning" id="collocMeaning"></div>
-      <div class="colloc-examples">
-        <div class="colloc-ex correct">
-          <div class="colloc-ex-label">Correct</div>
-          <p id="collocCorrect"></p>
-        </div>
-        <div class="colloc-ex wrong">
-          <div class="colloc-ex-label">Common Mistake</div>
-          <p id="collocWrong"></p>
-        </div>
+      <div class="daily-teaser-card colloc-preview">
+        <div class="dtc-tag en">Collocation of the Day</div>
+        <div class="dtc-word en" id="teaserColloc"></div>
+        <div class="dtc-meaning" id="teaserCollocMeaning"></div>
       </div>
     </div>
-    <div class="colloc-nav">
-      <button onclick="changeColloc(-1)" aria-label="이전">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <span class="colloc-counter" id="collocCounter"></span>
-      <button onclick="changeColloc(1)" aria-label="다음">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
+    <a href="daily.html" class="daily-teaser-btn">
+      오늘의 학습 바로가기
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
   </div>
 </section>
 
@@ -2540,116 +2339,21 @@ function closeMobile() {
   mobileMenu.classList.remove('open');
 }
 
-// ─── Daily Expression ───
-const WORDS = [
-  { word: "ubiquitous", pos: "adjective", band: "Band 7.0+", meaning: "어디에나 있는, 아주 흔한", en: "Social media has become ubiquitous in modern society.", ko: "소셜 미디어는 현대 사회에서 어디에나 존재하게 되었다." },
-  { word: "exacerbate", pos: "verb", band: "Band 7.0+", meaning: "악화시키다, 더 심하게 하다", en: "Climate change has exacerbated water shortages worldwide.", ko: "기후 변화는 전 세계적으로 물 부족을 악화시켰다." },
-  { word: "mitigate", pos: "verb", band: "Band 7.0+", meaning: "완화하다, 경감시키다", en: "The government took measures to mitigate the impact of inflation.", ko: "정부는 인플레이션의 영향을 완화하기 위한 조치를 취했다." },
-  { word: "unprecedented", pos: "adjective", band: "Band 6.5+", meaning: "전례 없는, 유례없는", en: "The pandemic caused an unprecedented disruption to global education.", ko: "팬데믹은 전 세계 교육에 전례 없는 혼란을 야기했다." },
-  { word: "detrimental", pos: "adjective", band: "Band 7.0+", meaning: "해로운, 유해한", en: "Excessive screen time can be detrimental to children's development.", ko: "과도한 스크린 타임은 아이들의 발달에 해로울 수 있다." },
-  { word: "fluctuate", pos: "verb", band: "Band 6.0+", meaning: "변동하다, 오르내리다", en: "Oil prices tend to fluctuate significantly during economic crises.", ko: "유가는 경제 위기 동안 크게 변동하는 경향이 있다." },
-  { word: "deteriorate", pos: "verb", band: "Band 6.5+", meaning: "악화되다, 나빠지다", en: "Air quality continues to deteriorate in many urban areas.", ko: "많은 도시 지역에서 공기 질이 계속 악화되고 있다." },
-  { word: "facilitate", pos: "verb", band: "Band 6.5+", meaning: "용이하게 하다, 촉진하다", en: "Technology can facilitate communication between different cultures.", ko: "기술은 서로 다른 문화 간의 소통을 촉진할 수 있다." },
-  { word: "substantial", pos: "adjective", band: "Band 6.0+", meaning: "상당한, 실질적인", en: "There has been a substantial increase in renewable energy investment.", ko: "재생 에너지 투자가 상당히 증가했다." },
-  { word: "prevalent", pos: "adjective", band: "Band 7.0+", meaning: "널리 퍼진, 유행하는", en: "Online shopping has become increasingly prevalent among young consumers.", ko: "온라인 쇼핑은 젊은 소비자들 사이에서 점점 더 널리 퍼지고 있다." },
-  { word: "ambiguous", pos: "adjective", band: "Band 7.0+", meaning: "모호한, 애매한", en: "The survey results were ambiguous and open to different interpretations.", ko: "설문 결과는 모호하여 다양한 해석이 가능했다." },
-  { word: "alleviate", pos: "verb", band: "Band 7.0+", meaning: "완화하다, 줄이다", en: "Regular exercise can help alleviate symptoms of depression.", ko: "규칙적인 운동은 우울증 증상을 완화하는 데 도움이 될 수 있다." },
-  { word: "paradox", pos: "noun", band: "Band 7.0+", meaning: "역설, 모순", en: "It is a paradox that richer nations often report lower happiness levels.", ko: "더 부유한 국가들이 종종 더 낮은 행복 수준을 보고하는 것은 역설이다." },
-  { word: "inevitable", pos: "adjective", band: "Band 6.5+", meaning: "불가피한, 필연적인", en: "Some degree of cultural change is inevitable in a globalised world.", ko: "세계화된 세상에서 어느 정도의 문화적 변화는 불가피하다." },
-  { word: "implement", pos: "verb", band: "Band 6.0+", meaning: "시행하다, 실행하다", en: "The school plans to implement a new assessment system next year.", ko: "학교는 내년에 새로운 평가 시스템을 시행할 계획이다." },
-  { word: "proliferate", pos: "verb", band: "Band 7.5+", meaning: "급속히 증가하다, 확산되다", en: "Fast food chains have proliferated across developing countries.", ko: "패스트푸드 체인점이 개발도상국 전역에 급속히 증가했다." },
-  { word: "versatile", pos: "adjective", band: "Band 7.0+", meaning: "다재다능한, 다용도의", en: "Bamboo is an incredibly versatile material used in construction and textiles.", ko: "대나무는 건설과 섬유에 사용되는 매우 다용도적인 소재이다." },
-  { word: "scrutinise", pos: "verb", band: "Band 7.5+", meaning: "면밀히 조사하다, 정밀 검토하다", en: "Researchers scrutinised the data to identify patterns in consumer behaviour.", ko: "연구자들은 소비자 행동의 패턴을 파악하기 위해 데이터를 면밀히 조사했다." },
-  { word: "undermine", pos: "verb", band: "Band 6.5+", meaning: "약화시키다, 훼손하다", en: "Corruption can undermine public trust in government institutions.", ko: "부패는 정부 기관에 대한 대중의 신뢰를 약화시킬 수 있다." },
-  { word: "inherent", pos: "adjective", band: "Band 7.0+", meaning: "내재하는, 본질적인", en: "There are inherent risks in any form of investment.", ko: "어떤 형태의 투자에도 내재적인 위험이 있다." },
-  { word: "disparity", pos: "noun", band: "Band 7.0+", meaning: "격차, 불균형", en: "The disparity between rich and poor continues to widen globally.", ko: "부유층과 빈곤층 사이의 격차가 전 세계적으로 계속 벌어지고 있다." },
-  { word: "plausible", pos: "adjective", band: "Band 7.5+", meaning: "그럴듯한, 타당한", en: "The researcher proposed a plausible explanation for the unexpected results.", ko: "연구자는 예상치 못한 결과에 대해 그럴듯한 설명을 제시했다." },
-  { word: "conducive", pos: "adjective", band: "Band 7.0+", meaning: "도움이 되는, 이바지하는", en: "A quiet environment is more conducive to effective learning.", ko: "조용한 환경이 효과적인 학습에 더 도움이 된다." },
-  { word: "encompass", pos: "verb", band: "Band 7.0+", meaning: "포괄하다, 포함하다", en: "The study encompasses a wide range of socioeconomic factors.", ko: "이 연구는 광범위한 사회경제적 요인을 포괄한다." },
-  { word: "pragmatic", pos: "adjective", band: "Band 7.5+", meaning: "실용적인, 현실적인", en: "A pragmatic approach to environmental policy is needed.", ko: "환경 정책에 대한 실용적인 접근이 필요하다." },
-  { word: "susceptible", pos: "adjective", band: "Band 7.0+", meaning: "영향을 받기 쉬운, 취약한", en: "Young people are particularly susceptible to peer pressure.", ko: "젊은이들은 특히 또래 압력에 영향을 받기 쉽다." },
-  { word: "eradicate", pos: "verb", band: "Band 7.0+", meaning: "근절하다, 박멸하다", en: "Global efforts to eradicate poverty have made significant progress.", ko: "빈곤을 근절하기 위한 전 세계적 노력이 상당한 진전을 이루었다." },
-  { word: "diminish", pos: "verb", band: "Band 6.5+", meaning: "줄어들다, 감소하다", en: "The influence of traditional media has diminished with the rise of the internet.", ko: "전통 미디어의 영향력은 인터넷의 부상과 함께 줄어들었다." },
-  { word: "compelling", pos: "adjective", band: "Band 7.0+", meaning: "설득력 있는, 강렬한", en: "The documentary presented a compelling argument for conservation.", ko: "그 다큐멘터리는 보존에 대한 설득력 있는 논거를 제시했다." },
-  { word: "allocate", pos: "verb", band: "Band 6.5+", meaning: "배분하다, 할당하다", en: "The government should allocate more resources to public healthcare.", ko: "정부는 공공 의료에 더 많은 자원을 배분해야 한다." },
-];
-
-// 연+월+일 기반 해시로 365일 내 중복 최소화
-function dayHash(d) {
-  const n = d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
-  return ((n * 2654435761) >>> 0) % WORDS.length;
-}
-let currentWordIndex = dayHash(new Date());
-
-function renderWord() {
-  const w = WORDS[currentWordIndex];
-  document.getElementById('dailyBand').textContent = w.band;
-  document.getElementById('dailyPos').textContent = w.pos;
-  document.getElementById('dailyWord').textContent = w.word;
-  document.getElementById('dailyMeaning').textContent = w.meaning;
-  document.getElementById('dailyExEn').textContent = '"' + w.en + '"';
-  document.getElementById('dailyExKo').textContent = w.ko;
-  document.getElementById('dailyCounter').textContent = (currentWordIndex + 1) + ' / ' + WORDS.length;
-}
-
-function changeWord(dir) {
-  currentWordIndex = (currentWordIndex + dir + WORDS.length) % WORDS.length;
-  renderWord();
-}
-
-renderWord();
-
-// ─── Daily Collocation ───
-const COLLOCS = [
-  { phrase: "make a decision", meaning: "결정을 내리다", correct: "We need to make a decision by Friday.", wrong: "We need to do a decision by Friday." },
-  { phrase: "take advantage of", meaning: "~을 이용하다, 활용하다", correct: "Students should take advantage of free resources.", wrong: "Students should use advantage of free resources." },
-  { phrase: "pay attention to", meaning: "~에 주의를 기울이다", correct: "You should pay attention to the details.", wrong: "You should give attention to the details." },
-  { phrase: "do research", meaning: "연구하다, 조사하다", correct: "Scientists do research on climate change.", wrong: "Scientists make research on climate change." },
-  { phrase: "have an impact on", meaning: "~에 영향을 미치다", correct: "Technology has had a huge impact on education.", wrong: "Technology has done a huge impact on education." },
-  { phrase: "raise awareness", meaning: "인식을 높이다", correct: "The campaign aims to raise awareness of pollution.", wrong: "The campaign aims to rise awareness of pollution." },
-  { phrase: "draw a conclusion", meaning: "결론을 내리다", correct: "It is difficult to draw a conclusion from limited data.", wrong: "It is difficult to make a conclusion from limited data." },
-  { phrase: "pose a threat", meaning: "위협이 되다", correct: "Climate change poses a serious threat to biodiversity.", wrong: "Climate change gives a serious threat to biodiversity." },
-  { phrase: "meet a deadline", meaning: "마감 기한을 맞추다", correct: "She always meets her deadlines without fail.", wrong: "She always catches her deadlines without fail." },
-  { phrase: "reach a consensus", meaning: "합의에 도달하다", correct: "The committee reached a consensus on the new policy.", wrong: "The committee arrived a consensus on the new policy." },
-  { phrase: "undergo a transformation", meaning: "변화를 겪다", correct: "The city has undergone a dramatic transformation.", wrong: "The city has made a dramatic transformation." },
-  { phrase: "place emphasis on", meaning: "~을 강조하다", correct: "Schools should place more emphasis on critical thinking.", wrong: "Schools should put more emphasis to critical thinking." },
-  { phrase: "conduct a survey", meaning: "설문조사를 실시하다", correct: "Researchers conducted a survey of 1,000 participants.", wrong: "Researchers made a survey of 1,000 participants." },
-  { phrase: "bear in mind", meaning: "~을 명심하다", correct: "Bear in mind that this is only a preliminary result.", wrong: "Carry in mind that this is only a preliminary result." },
-  { phrase: "gain insight into", meaning: "~에 대한 통찰을 얻다", correct: "The study helped us gain insight into consumer behaviour.", wrong: "The study helped us get insight of consumer behaviour." },
-  { phrase: "take into account", meaning: "~을 고려하다", correct: "We must take cultural differences into account.", wrong: "We must put cultural differences into account." },
-  { phrase: "come to terms with", meaning: "~을 받아들이다", correct: "Society must come to terms with an ageing population.", wrong: "Society must come in terms with an ageing population." },
-  { phrase: "shed light on", meaning: "~을 밝히다, 규명하다", correct: "New evidence sheds light on the cause of the disease.", wrong: "New evidence throws light at the cause of the disease." },
-  { phrase: "give rise to", meaning: "~을 야기하다", correct: "Urbanisation has given rise to many social problems.", wrong: "Urbanisation has given raise to many social problems." },
-  { phrase: "run the risk of", meaning: "~의 위험을 감수하다", correct: "Companies run the risk of losing customers.", wrong: "Companies take the risk to losing customers." },
-  { phrase: "take measures", meaning: "조치를 취하다", correct: "The government should take measures to reduce pollution.", wrong: "The government should do measures to reduce pollution." },
-  { phrase: "bridge the gap", meaning: "격차를 해소하다", correct: "Education can help bridge the gap between rich and poor.", wrong: "Education can help close the gap with rich and poor." },
-  { phrase: "play a role in", meaning: "~에서 역할을 하다", correct: "Parents play a crucial role in a child's development.", wrong: "Parents make a crucial role in a child's development." },
-  { phrase: "face a challenge", meaning: "도전에 직면하다", correct: "Developing countries face numerous challenges.", wrong: "Developing countries meet numerous challenges." },
-  { phrase: "keep pace with", meaning: "~에 보조를 맞추다", correct: "It is hard to keep pace with technological change.", wrong: "It is hard to hold pace with technological change." },
-  { phrase: "break new ground", meaning: "새 지평을 열다", correct: "The research breaks new ground in renewable energy.", wrong: "The research opens new ground in renewable energy." },
-  { phrase: "hold the view that", meaning: "~라는 견해를 갖다", correct: "Many experts hold the view that reform is necessary.", wrong: "Many experts keep the view that reform is necessary." },
-  { phrase: "set a precedent", meaning: "선례를 만들다", correct: "This ruling could set a dangerous precedent.", wrong: "This ruling could make a dangerous precedent." },
-  { phrase: "exert influence on", meaning: "~에 영향력을 행사하다", correct: "The media exerts considerable influence on public opinion.", wrong: "The media puts considerable influence on public opinion." },
-  { phrase: "lend support to", meaning: "~을 뒷받침하다", correct: "Recent findings lend support to this theory.", wrong: "Recent findings give support for this theory." },
-];
-
-let currentCollocIndex = (dayHash(new Date()) + 7) % COLLOCS.length;
-
-function renderColloc() {
-  var c = COLLOCS[currentCollocIndex];
-  document.getElementById('collocPhrase').textContent = c.phrase;
-  document.getElementById('collocMeaning').textContent = c.meaning;
-  document.getElementById('collocCorrect').textContent = c.correct;
-  document.getElementById('collocWrong').textContent = c.wrong;
-  document.getElementById('collocCounter').textContent = (currentCollocIndex + 1) + ' / ' + COLLOCS.length;
-}
-
-function changeColloc(dir) {
-  currentCollocIndex = (currentCollocIndex + dir + COLLOCS.length) % COLLOCS.length;
-  renderColloc();
-}
-
-renderColloc();
+// ─── Daily Teaser (today's word & collocation preview) ───
+(function() {
+  var TEASER_WORDS = ["ubiquitous","exacerbate","mitigate","unprecedented","detrimental","fluctuate","deteriorate","facilitate","substantial","prevalent","ambiguous","alleviate","paradox","inevitable","implement","proliferate","versatile","scrutinise","undermine","inherent","disparity","plausible","conducive","encompass","pragmatic","susceptible","eradicate","diminish","compelling","allocate"];
+  var TEASER_MEANINGS = ["어디에나 있는","악화시키다","완화하다","전례 없는","해로운","변동하다","악화되다","촉진하다","상당한","널리 퍼진","모호한","완화하다","역설","불가피한","시행하다","급속히 증가하다","다재다능한","면밀히 조사하다","약화시키다","내재하는","격차","그럴듯한","도움이 되는","포괄하다","실용적인","취약한","근절하다","줄어들다","설득력 있는","배분하다"];
+  var TEASER_COLLOCS = ["make a decision","take advantage of","pay attention to","do research","have an impact on","raise awareness","draw a conclusion","pose a threat","meet a deadline","reach a consensus","undergo a transformation","place emphasis on","conduct a survey","bear in mind","gain insight into","take into account","come to terms with","shed light on","give rise to","run the risk of","take measures","bridge the gap","play a role in","face a challenge","keep pace with","break new ground","hold the view that","set a precedent","exert influence on","lend support to"];
+  var TEASER_CMEANINGS = ["결정을 내리다","~을 이용하다","~에 주의를 기울이다","연구하다","~에 영향을 미치다","인식을 높이다","결론을 내리다","위협이 되다","마감 기한을 맞추다","합의에 도달하다","변화를 겪다","~을 강조하다","설문조사를 실시하다","~을 명심하다","~에 대한 통찰을 얻다","~을 고려하다","~을 받아들이다","~을 밝히다","~을 야기하다","~의 위험을 감수하다","조치를 취하다","격차를 해소하다","~에서 역할을 하다","도전에 직면하다","~에 보조를 맞추다","새 지평을 열다","~라는 견해를 갖다","선례를 만들다","~에 영향력을 행사하다","~을 뒷받침하다"];
+  var d = new Date();
+  var n = d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+  var wi = ((n * 2654435761) >>> 0) % TEASER_WORDS.length;
+  var ci = (((n * 2654435761) >>> 0) % TEASER_COLLOCS.length + 7) % TEASER_COLLOCS.length;
+  document.getElementById('teaserWord').textContent = TEASER_WORDS[wi];
+  document.getElementById('teaserWordMeaning').textContent = TEASER_MEANINGS[wi];
+  document.getElementById('teaserColloc').textContent = TEASER_COLLOCS[ci];
+  document.getElementById('teaserCollocMeaning').textContent = TEASER_CMEANINGS[ci];
+})();
 
 // ─── Mini Quiz ───
 var QUIZ_POOL = [
