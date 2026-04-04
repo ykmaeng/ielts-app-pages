@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IELTS VOCA - 아이엘츠 보카 | IELTS 시험 준비, 이 앱 하나로</title>
-<meta name="description" content="Band 4.0~8.0 수준별 단어·문법·리딩·리스닝·스피킹·라이팅·모의고사. IELTS 시험 준비를 위한 올인원 학습 앱.">
+<meta name="description" content="IELTS 시험 완벽 가이드 + Band 4.0~8.0 수준별 단어·문법·리딩·리스닝·스피킹·라이팅·모의고사. IELTS 시험 준비를 위한 올인원 학습 앱.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -28,6 +28,7 @@
   --gray-600: #525252;
   --gray-800: #262626;
   --gray-900: #171717;
+  --nav-h: 64px;
 }
 
 html { scroll-behavior: smooth; }
@@ -54,6 +55,160 @@ body {
 .reveal-d3 { transition-delay: 0.3s; }
 .reveal-d4 { transition-delay: 0.4s; }
 .reveal-d5 { transition-delay: 0.5s; }
+
+/* ─── Sticky Nav ─── */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  transition: background 0.35s, box-shadow 0.35s, backdrop-filter 0.35s;
+}
+
+.site-nav.scrolled {
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--gray-900);
+}
+
+.nav-brand img { width: 32px; height: 32px; border-radius: 9px; }
+
+.nav-brand span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transition: transform 0.25s cubic-bezier(.22,1,.36,1);
+}
+
+.nav-links a:hover { color: var(--gray-900); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 20px;
+  background: var(--gray-900);
+  color: #fff;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
+.nav-cta svg { width: 14px; height: 14px; }
+
+.nav-hamburger {
+  display: none;
+  width: 36px; height: 36px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--gray-800);
+  border-radius: 1px;
+  position: absolute;
+  left: 8px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.nav-hamburger span:nth-child(1) { top: 11px; }
+.nav-hamburger span:nth-child(2) { top: 17px; }
+.nav-hamburger span:nth-child(3) { top: 23px; }
+
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  top: var(--nav-h); left: 0; right: 0;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 20px 28px 28px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  z-index: 99;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-mobile-menu.open { display: flex; }
+
+.nav-mobile-menu a {
+  display: block;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.nav-mobile-menu a:hover { background: var(--gray-100); }
+
+.nav-mobile-menu .nav-cta {
+  margin-top: 12px;
+  text-align: center;
+  justify-content: center;
+  padding: 14px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+}
 
 /* ─── Hero ─── */
 .hero {
@@ -287,7 +442,7 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ─── Stats bar ─── */
+/* ─── Stats bar ──��� */
 .stats {
   padding: 40px 24px;
   background: var(--gray-900);
@@ -335,13 +490,7 @@ body {
   font-weight: 400;
 }
 
-/* ─── Features ─── */
-.features {
-  padding: 110px 24px;
-  background: #fff;
-  position: relative;
-}
-
+/* ─── Shared section anatomy ─── */
 .section-header { text-align: center; margin-bottom: 64px; }
 
 .section-label {
@@ -370,6 +519,342 @@ body {
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
+}
+
+/* ─── IELTS Guide ─── */
+.ielts-guide {
+  padding: 110px 24px;
+  background: #fff;
+  position: relative;
+}
+
+.guide-modules {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto 64px;
+}
+
+@media (min-width: 640px) { .guide-modules { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 920px) { .guide-modules { grid-template-columns: repeat(4, 1fr); } }
+
+.guide-module {
+  position: relative;
+  padding: 32px 24px 28px;
+  border-radius: 20px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s;
+}
+
+.guide-module:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.06); }
+
+.guide-module .gm-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 1.4rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.guide-module h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.guide-module .gm-detail {
+  font-size: 0.82rem;
+  color: var(--gray-500);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.guide-module p {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  line-height: 1.55;
+}
+
+.gm-listening {
+  background: linear-gradient(160deg, #f5f3ff 0%, #ede9fe 100%);
+  border: 1px solid rgba(167,139,250,0.15);
+}
+.gm-listening .gm-icon { background: #fff; color: #7c3aed; }
+
+.gm-reading {
+  background: linear-gradient(160deg, #eff6ff 0%, #dbeafe 100%);
+  border: 1px solid rgba(59,130,246,0.15);
+}
+.gm-reading .gm-icon { background: #fff; color: var(--blue); }
+
+.gm-writing {
+  background: linear-gradient(160deg, #fff7ed 0%, #ffedd5 100%);
+  border: 1px solid rgba(249,115,22,0.15);
+}
+.gm-writing .gm-icon { background: #fff; color: var(--orange); }
+
+.gm-speaking {
+  background: linear-gradient(160deg, #ecfdf5 0%, #d1fae5 100%);
+  border: 1px solid rgba(52,211,153,0.15);
+}
+.gm-speaking .gm-icon { background: #fff; color: var(--green-deep); }
+
+/* Band scale visual */
+.band-visual {
+  max-width: 700px;
+  margin: 0 auto 48px;
+}
+
+.band-scale {
+  display: flex;
+  align-items: stretch;
+  height: 56px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  margin-bottom: 12px;
+}
+
+.band-scale-seg {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  position: relative;
+  transition: flex 0.3s;
+}
+
+.band-scale-seg span {
+  font-size: 0.6rem;
+  font-weight: 600;
+  opacity: 0.85;
+  letter-spacing: 0.5px;
+}
+
+.band-labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.band-labels span {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  font-weight: 500;
+}
+
+/* Comparison table */
+.compare-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.compare-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 700;
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+  font-size: 0.82rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.compare-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-600);
+}
+
+.compare-table tr:last-child td { border-bottom: none; }
+
+.compare-table td:first-child { font-weight: 600; color: var(--gray-800); }
+
+/* ─── Daily Expression ─── */
+.daily-expression {
+  padding: 80px 24px;
+  background: var(--gray-900);
+  position: relative;
+  overflow: hidden;
+}
+
+.daily-expression::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 40%, rgba(249,115,22,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 60%, rgba(52,211,153,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.daily-inner {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.daily-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.daily-title {
+  font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 36px;
+}
+
+.daily-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 40px 36px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+
+.daily-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: var(--orange);
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.daily-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.daily-band {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: rgba(249,115,22,0.15);
+  color: var(--orange);
+}
+
+.daily-pos {
+  font-size: 0.78rem;
+  color: var(--gray-400);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.daily-word {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.daily-meaning {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.daily-example {
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  padding: 20px 22px;
+  border-left: 3px solid var(--orange);
+}
+
+.daily-example .ex-en {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.daily-example .ex-ko {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.5;
+}
+
+.daily-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.daily-nav button {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.daily-nav button:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.daily-nav button svg { width: 16px; height: 16px; }
+
+.daily-counter {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  font-weight: 600;
+}
+
+/* ─── Features ─── */
+.features {
+  padding: 110px 24px;
+  background: #fff;
+  position: relative;
 }
 
 .features-grid {
@@ -446,6 +931,318 @@ body {
 .fc-blue .fc-pattern { background: var(--blue); }
 .fc-green .fc-pattern { background: var(--green); }
 .fc-purple .fc-pattern { background: var(--purple); }
+
+/* ─── Band Guide ─── */
+.band-guide {
+  padding: 110px 24px;
+  background: var(--gray-50);
+  position: relative;
+}
+
+.band-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) { .band-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 920px) { .band-cards { grid-template-columns: repeat(3, 1fr); } }
+
+.band-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 32px 26px 28px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s;
+}
+
+.band-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.06); }
+
+.band-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.band-card-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.band-card-level {
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 8px;
+}
+
+.band-card-desc {
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.band-card-focus {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.band-card-focus li {
+  font-size: 0.78rem;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: var(--gray-50);
+  color: var(--gray-600);
+  font-weight: 500;
+  border: 1px solid var(--gray-200);
+}
+
+.band-card .bc-stripe {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+
+/* Band color coding */
+.bc-50 .band-card-num { color: #ef4444; }
+.bc-50 .band-card-level { background: #fef2f2; color: #dc2626; }
+.bc-50 .bc-stripe { background: linear-gradient(90deg, #ef4444, #f87171); }
+
+.bc-55 .band-card-num { color: var(--orange); }
+.bc-55 .band-card-level { background: #fff7ed; color: var(--orange-deep); }
+.bc-55 .bc-stripe { background: linear-gradient(90deg, var(--orange), #fb923c); }
+
+.bc-60 .band-card-num { color: #eab308; }
+.bc-60 .band-card-level { background: #fefce8; color: #a16207; }
+.bc-60 .bc-stripe { background: linear-gradient(90deg, #eab308, #facc15); }
+
+.bc-65 .band-card-num { color: var(--green-deep); }
+.bc-65 .band-card-level { background: #ecfdf5; color: var(--green-deep); }
+.bc-65 .bc-stripe { background: linear-gradient(90deg, var(--green-deep), var(--green)); }
+
+.bc-70 .band-card-num { color: var(--blue); }
+.bc-70 .band-card-level { background: #eff6ff; color: #2563eb; }
+.bc-70 .bc-stripe { background: linear-gradient(90deg, var(--blue), #60a5fa); }
+
+.bc-75 .band-card-num { color: #7c3aed; }
+.bc-75 .band-card-level { background: #f5f3ff; color: #7c3aed; }
+.bc-75 .bc-stripe { background: linear-gradient(90deg, #7c3aed, var(--purple)); }
+
+/* ─── Study Tips ─── */
+.study-tips {
+  padding: 110px 24px;
+  background: #fff;
+  position: relative;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) { .tips-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 920px) { .tips-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.tip-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 20px;
+  padding: 28px 24px 24px;
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s, border-color 0.35s;
+}
+
+.tip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.05);
+  border-color: var(--orange);
+}
+
+.tip-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--orange) 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.tip-card h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.tip-card p {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+/* ─── App Preview ─── */
+.app-preview {
+  padding: 110px 24px;
+  background: linear-gradient(180deg, var(--gray-50) 0%, #fff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-scroll {
+  display: flex;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 20px 20px;
+  scrollbar-width: none;
+}
+
+.preview-scroll::-webkit-scrollbar { display: none; }
+
+.phone-frame {
+  flex-shrink: 0;
+  width: 260px;
+  scroll-snap-align: center;
+  transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+}
+
+.phone-frame:hover { transform: translateY(-8px); }
+
+.phone-shell {
+  background: var(--gray-900);
+  border-radius: 36px;
+  padding: 14px 10px;
+  box-shadow:
+    0 24px 80px rgba(0,0,0,0.15),
+    0 8px 24px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  position: relative;
+}
+
+.phone-notch {
+  width: 100px; height: 28px;
+  background: var(--gray-900);
+  border-radius: 0 0 16px 16px;
+  position: absolute;
+  top: 14px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.phone-screen {
+  border-radius: 26px;
+  overflow: hidden;
+  aspect-ratio: 9 / 19.5;
+  position: relative;
+}
+
+.phone-screen-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px 20px 20px;
+}
+
+.phone-screen-content .ps-icon {
+  font-size: 2.4rem;
+  margin-bottom: 4px;
+}
+
+.phone-screen-content .ps-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.phone-screen-content .ps-desc {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Mock UI elements inside phone */
+.ps-mock-cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.ps-mock-card {
+  background: rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ps-mock-dot {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+
+.ps-mock-lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ps-mock-line {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.15);
+}
+
+.ps-mock-line:first-child { width: 75%; }
+.ps-mock-line:last-child { width: 50%; }
+
+.screen-orange { background: linear-gradient(160deg, #f97316 0%, #ea580c 100%); }
+.screen-blue { background: linear-gradient(160deg, #3b82f6 0%, #2563eb 100%); }
+.screen-green { background: linear-gradient(160deg, #059669 0%, #047857 100%); }
+.screen-purple { background: linear-gradient(160deg, #7c3aed 0%, #6d28d9 100%); }
+
+.phone-label {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--gray-800);
+}
+
+@media (min-width: 920px) {
+  .preview-scroll {
+    justify-content: center;
+    overflow-x: visible;
+  }
+}
 
 /* ─── CTA Banner ─── */
 .cta-banner {
@@ -691,16 +1488,53 @@ footer a:hover { color: #fff; }
 
 /* ─── Mobile ─── */
 @media (max-width: 639px) {
-  .hero { padding: 60px 20px 48px; }
+  .hero { padding: 100px 20px 48px; }
   .hero-icon { width: 100px; height: 100px; border-radius: 26px; }
-  .features, .pricing { padding: 80px 20px; }
+  .features, .pricing, .ielts-guide, .band-guide, .study-tips, .app-preview { padding: 80px 20px; }
   .cta-banner { padding: 60px 20px; }
   .geo { display: none; }
   .stats-grid { gap: 28px; }
+  .phone-frame { width: 220px; }
+  .compare-table { font-size: 0.8rem; }
+  .compare-table th, .compare-table td { padding: 10px 14px; }
 }
 </style>
 </head>
 <body>
+
+<!-- Sticky Nav -->
+<nav class="site-nav" id="siteNav">
+  <a href="#" class="nav-brand">
+    <img src="icon_512.png" alt="IELTS VOCA" width="32" height="32">
+    <span class="en">IELTS VOCA</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#guide">시험 가이드</a></li>
+    <li><a href="#features">학습 기능</a></li>
+    <li><a href="#bands">밴드 가이드</a></li>
+    <li><a href="#tips">학습 꿀팁</a></li>
+    <li><a href="#pricing">요금제</a></li>
+  </ul>
+  <a href="https://play.google.com/store/apps/details?id=com.young.ielts_prep" class="nav-cta" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.396 12l2.302-2.302zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+    다운로드
+  </a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="메뉴">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile-menu" id="navMobile">
+  <a href="#guide" onclick="closeMobile()">시험 가이드</a>
+  <a href="#features" onclick="closeMobile()">학습 기능</a>
+  <a href="#bands" onclick="closeMobile()">밴드 가이드</a>
+  <a href="#tips" onclick="closeMobile()">��습 꿀팁</a>
+  <a href="#pricing" onclick="closeMobile()">요금제</a>
+  <a href="https://play.google.com/store/apps/details?id=com.young.ielts_prep" class="nav-cta" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.396 12l2.302-2.302zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+    Google Play에서 다운로드
+  </a>
+</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -744,9 +1578,9 @@ footer a:hover { color: #fff; }
   <div class="hero-cta">
     <a href="https://play.google.com/store/apps/details?id=com.young.ielts_prep" class="btn-play" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.396 12l2.302-2.302zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
-      Google Play에서 다운로드
+      Google Play에서 다운로��
     </a>
-    <span class="btn-sub">Android 7.0 이상 · 무료 다운로드</span>
+    <span class="btn-sub">Android 7.0 이상 &middot; 무료 다운로드</span>
   </div>
 
   <div class="hero-scroll">
@@ -776,12 +1610,131 @@ footer a:hover { color: #fff; }
   </div>
 </section>
 
+<!-- IELTS Guide -->
+<section class="ielts-guide" id="guide">
+  <div class="section-header reveal">
+    <div class="section-label en">IELTS Guide</div>
+    <h2 class="section-title">IELTS 시험이란?</h2>
+    <p class="section-desc">International English Language Testing System<br>전 세계 11,500개 이상의 기관이 인정하는 영어 능력 시험</p>
+  </div>
+
+  <div class="guide-modules">
+    <div class="guide-module gm-listening reveal">
+      <div class="gm-icon">🎧</div>
+      <h3 class="en">Listening</h3>
+      <div class="gm-detail">30분 · 40문제</div>
+      <p>4개 섹션의 대화와 독백을 듣고 답합니다. 한 번만 들려주므로 집중력이 관건입니다.</p>
+    </div>
+    <div class="guide-module gm-reading reveal reveal-d1">
+      <div class="gm-icon">📖</div>
+      <h3 class="en">Reading</h3>
+      <div class="gm-detail">60분 · 40문제</div>
+      <p>3개의 긴 지문을 읽고 다양한 유형의 문제를 풉니다. Academic과 General은 지문이 다릅니다.</p>
+    </div>
+    <div class="guide-module gm-writing reveal reveal-d2">
+      <div class="gm-icon">✍️</div>
+      <h3 class="en">Writing</h3>
+      <div class="gm-detail">60분 · 2 Tasks</div>
+      <p>Task 1은 도표/편지, Task 2는 에세이. 논리적 구성과 정확한 표현이 채점 핵심입니다.</p>
+    </div>
+    <div class="guide-module gm-speaking reveal reveal-d3">
+      <div class="gm-icon">🎙️</div>
+      <h3 class="en">Speaking</h3>
+      <div class="gm-detail">11~14분 · 3 Parts</div>
+      <p>시험관과 1:1 면접. 자기소개, 주제 발표, 토론의 3단계로 진행됩니다.</p>
+    </div>
+  </div>
+
+  <!-- Band scale -->
+  <div class="band-visual reveal">
+    <div class="band-scale">
+      <div class="band-scale-seg" style="background:#ef4444"><span>Non</span>1</div>
+      <div class="band-scale-seg" style="background:#f97316"><span>Ltd</span>3</div>
+      <div class="band-scale-seg" style="background:#eab308"><span>Mod</span>5</div>
+      <div class="band-scale-seg" style="background:#22c55e"><span>Good</span>6</div>
+      <div class="band-scale-seg" style="background:#3b82f6"><span>Very</span>7</div>
+      <div class="band-scale-seg" style="background:#7c3aed"><span>Expert</span>9</div>
+    </div>
+    <div class="band-labels">
+      <span>비사용자</span>
+      <span>제한적</span>
+      <span>보통</span>
+      <span>우수</span>
+      <span>능숙</span>
+      <span>전문가</span>
+    </div>
+  </div>
+
+  <!-- Academic vs General -->
+  <div class="compare-wrap reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>Academic</th>
+          <th>General Training</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>목적</td>
+          <td>대학 입학 · 전문 기관</td>
+          <td>이민 · 취업 · 고교</td>
+        </tr>
+        <tr>
+          <td>Reading</td>
+          <td>학술 지문 3개</td>
+          <td>일상+직업 지문</td>
+        </tr>
+        <tr>
+          <td>Writing Task 1</td>
+          <td>그래프/도표 분석 (150단어)</td>
+          <td>편지 쓰기 (150단어)</td>
+        </tr>
+        <tr>
+          <td>Listening · Speaking</td>
+          <td colspan="2" style="text-align:center">동일</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Daily Expression -->
+<section class="daily-expression">
+  <div class="daily-inner reveal">
+    <div class="daily-label en">Word of the Day</div>
+    <h2 class="daily-title">오늘의 IELTS 표현</h2>
+    <div class="daily-card" id="dailyCard">
+      <div class="daily-meta">
+        <span class="daily-band en" id="dailyBand"></span>
+        <span class="daily-pos" id="dailyPos"></span>
+      </div>
+      <div class="daily-word en" id="dailyWord"></div>
+      <div class="daily-meaning" id="dailyMeaning"></div>
+      <div class="daily-example">
+        <div class="ex-en" id="dailyExEn"></div>
+        <div class="ex-ko" id="dailyExKo"></div>
+      </div>
+    </div>
+    <div class="daily-nav">
+      <button onclick="changeWord(-1)" aria-label="이전">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <span class="daily-counter" id="dailyCounter"></span>
+      <button onclick="changeWord(1)" aria-label="다음">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- Features -->
 <section class="features" id="features">
   <div class="section-header reveal">
     <div class="section-label en">Features</div>
     <h2 class="section-title">IELTS 완벽 대비,<br>6가지 핵심 학습</h2>
-    <p class="section-desc">단어 암기부터 실전 모의고사까지,<br>체계적인 학습 커리큘럼을 제공합니다</p>
+    <p class="section-desc">단어 암기부터 실전 모의고사까지,<br>체계적인 학습 ��리큘럼을 제공합니다</p>
   </div>
   <div class="features-grid">
     <div class="feature-card fc-orange reveal">
@@ -792,7 +1745,7 @@ footer a:hover { color: #fff; }
     </div>
     <div class="feature-card fc-blue reveal reveal-d1">
       <div class="fc-pattern"></div>
-      <div class="fc-icon">✏️</div>
+      <div class="fc-icon">✏��</div>
       <h3>문법</h3>
       <p>밴드별 핵심 문법을 레슨으로 배우고, 퀴즈·오류 찾기·문장 변환 게임으로 확실히 익힙니다.</p>
     </div>
@@ -800,7 +1753,7 @@ footer a:hover { color: #fff; }
       <div class="fc-pattern"></div>
       <div class="fc-icon">🔗</div>
       <h3>문장 만들기</h3>
-      <p>속도 번역, 문장 분석, 전치사 연습, 콜로케이션 학습으로 실전 문장력을 키웁니다.</p>
+      <p>속도 번역, 문장 분석, 전치사 연습, 콜로케이션 학습으로 실전 문장력을 키웁니���.</p>
     </div>
     <div class="feature-card fc-purple reveal">
       <div class="fc-pattern"></div>
@@ -812,7 +1765,7 @@ footer a:hover { color: #fff; }
       <div class="fc-pattern"></div>
       <div class="fc-icon">🎙️</div>
       <h3>Speaking</h3>
-      <p>섀도잉, 브레인스토밍, 주제별 핵심 표현. 파트별 스피킹 연습으로 자신감을 높입니다.</p>
+      <p>섀도잉, 브레인스토밍, 주제별 핵심 표현. 파트별 스피킹 연습으로 자신감을 높입��다.</p>
     </div>
     <div class="feature-card fc-blue reveal reveal-d2">
       <div class="fc-pattern"></div>
@@ -823,10 +1776,223 @@ footer a:hover { color: #fff; }
   </div>
 </section>
 
+<!-- Band Guide -->
+<section class="band-guide" id="bands">
+  <div class="section-header reveal">
+    <div class="section-label en">Band Guide</div>
+    <h2 class="section-title">밴드별 수준과 학습 전략</h2>
+    <p class="section-desc">현재 수준에 맞는 전략으로<br>효율적으로 목표 밴드에 도달하세요</p>
+  </div>
+  <div class="band-cards">
+    <div class="band-card bc-50 reveal">
+      <div class="bc-stripe"></div>
+      <div class="band-card-head">
+        <div class="band-card-num en">5.0</div>
+        <span class="band-card-level">입문</span>
+      </div>
+      <p class="band-card-desc">기본적인 의사소통은 가능하나, 복잡한 표현에서 자주 막힙니다. 기초 어휘와 문법 다지기가 핵심.</p>
+      <ul class="band-card-focus">
+        <li>기본 어휘 2,000개</li>
+        <li>필수 시제 6종</li>
+        <li>기초 문장 구조</li>
+      </ul>
+    </div>
+    <div class="band-card bc-55 reveal reveal-d1">
+      <div class="bc-stripe"></div>
+      <div class="band-card-head">
+        <div class="band-card-num en">5.5</div>
+        <span class="band-card-level">초중급</span>
+      </div>
+      <p class="band-card-desc">일상 주제는 소화하지만, 학술적 표현이 부족합니다. 콜로케이션과 접속사 활용이 관건.</p>
+      <ul class="band-card-focus">
+        <li>어휘 3,000개</li>
+        <li>복합문 연습</li>
+        <li>패러프레이징</li>
+      </ul>
+    </div>
+    <div class="band-card bc-60 reveal reveal-d2">
+      <div class="bc-stripe"></div>
+      <div class="band-card-head">
+        <div class="band-card-num en">6.0</div>
+        <span class="band-card-level">중급</span>
+      </div>
+      <p class="band-card-desc">대부분의 상황에서 효과적으로 소통합니다. 정확성과 다양성을 동시에 높여야 할 단계.</p>
+      <ul class="band-card-focus">
+        <li>어휘 4,000개</li>
+        <li>관계절·분사구문</li>
+        <li>에세이 구성력</li>
+      </ul>
+    </div>
+    <div class="band-card bc-65 reveal">
+      <div class="bc-stripe"></div>
+      <div class="band-card-head">
+        <div class="band-card-num en">6.5</div>
+        <span class="band-card-level">중상급</span>
+      </div>
+      <p class="band-card-desc">복잡한 주제도 다룰 수 있으나 간헐적 오류가 있습니다. 정밀한 표현력 향상이 목표.</p>
+      <ul class="band-card-focus">
+        <li>어휘 5,000개</li>
+        <li>가정법·도치</li>
+        <li>논리적 전개</li>
+      </ul>
+    </div>
+    <div class="band-card bc-70 reveal reveal-d1">
+      <div class="bc-stripe"></div>
+      <div class="band-card-head">
+        <div class="band-card-num en">7.0</div>
+        <span class="band-card-level">고급</span>
+      </div>
+      <p class="band-card-desc">복잡한 논증도 정확하게 표현합니다. 자연스러운 연어 사용과 학술 어휘가 차별점.</p>
+      <ul class="band-card-focus">
+        <li>어휘 6,000개+</li>
+        <li>학술 콜로케이션</li>
+        <li>비판적 분석</li>
+      </ul>
+    </div>
+    <div class="band-card bc-75 reveal reveal-d2">
+      <div class="bc-stripe"></div>
+      <div class="band-card-head">
+        <div class="band-card-num en">7.5+</div>
+        <span class="band-card-level">전문가</span>
+      </div>
+      <p class="band-card-desc">원어민에 가까운 유창성. 미묘한 뉘앙스와 관용적 표현 구사가 자유롭습니다.</p>
+      <ul class="band-card-focus">
+        <li>어휘 8,000개+</li>
+        <li>관용 표현·뉘앙스</li>
+        <li>원어민 수준 정확도</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Study Tips -->
+<section class="study-tips" id="tips">
+  <div class="section-header reveal">
+    <div class="section-label en">Study Tips</div>
+    <h2 class="section-title">IELTS 학습 꿀팁</h2>
+    <p class="section-desc">고득점자들이 공통으로 실천하는<br>검증된 학습 전략 6가지</p>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card reveal">
+      <div class="tip-num en">01</div>
+      <h3>매일 30분이<br>주말 3시간보다 낫다</h3>
+      <p>뇌는 반복 노출에 반응합니다. 하루 30분 꾸준한 학습이 벼락치기보다 기억 정착률이 3배 높습니다.</p>
+    </div>
+    <div class="tip-card reveal reveal-d1">
+      <div class="tip-num en">02</div>
+      <h3>영영사전으로<br>뜻을 영어로 이해하기</h3>
+      <p>한영 번역에 의존하면 Band 6.0에서 정체됩니다. 영어로 사고하는 습관이 고득점의 비밀.</p>
+    </div>
+    <div class="tip-card reveal reveal-d2">
+      <div class="tip-num en">03</div>
+      <h3>단어는 콜로케이션으로<br>통째로 외우기</h3>
+      <p>"make a decision" (O), "do a decision" (X). 단어를 함께 쓰이는 짝과 외워야 실전에서 자연스럽습니다.</p>
+    </div>
+    <div class="tip-card reveal">
+      <div class="tip-num en">04</div>
+      <h3>실전 모의고사를<br>시간 제한으로 풀기</h3>
+      <p>Reading 60분, Writing 60분. 시간 압박 속에서 연습해야 시험장에서 패닉하지 않습니다.</p>
+    </div>
+    <div class="tip-card reveal reveal-d1">
+      <div class="tip-num en">05</div>
+      <h3>스피킹은<br>녹음하고 다시 듣기</h3>
+      <p>자신의 발화를 객관적으로 들어야 문법 오류, 발음 문제, 불필요한 반복을 잡을 수 있습니다.</p>
+    </div>
+    <div class="tip-card reveal reveal-d2">
+      <div class="tip-num en">06</div>
+      <h3>라이팅은<br>모범답안 분석부터</h3>
+      <p>Band 7.0+ 답안의 구조, 연결어, 어휘를 분석하면 자신의 글에 적용할 패턴이 보이기 시작합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- App Preview -->
+<section class="app-preview" id="preview">
+  <div class="section-header reveal">
+    <div class="section-label en">App Preview</div>
+    <h2 class="section-title">앱 미리보기</h2>
+    <p class="section-desc">직관적인 인터페이스로<br>효율적인 학습 경험을 제공합니다</p>
+  </div>
+  <div class="preview-scroll">
+    <div class="phone-frame reveal">
+      <div class="phone-shell">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-screen-content screen-orange">
+            <div class="ps-icon">📖</div>
+            <div class="ps-title">단어 학습</div>
+            <div class="ps-desc">카드 학습 → 뜻 맞추기 → 스펠링 → 예문의 4단계 학습</div>
+            <div class="ps-mock-cards">
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-label">단어 학습</div>
+    </div>
+    <div class="phone-frame reveal reveal-d1">
+      <div class="phone-shell">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-screen-content screen-blue">
+            <div class="ps-icon">✏️</div>
+            <div class="ps-title">문법 레슨</div>
+            <div class="ps-desc">22개 필수 문법을 레슨 + 퀴즈 + 게임으로 완전 정복</div>
+            <div class="ps-mock-cards">
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-label">문법 레슨</div>
+    </div>
+    <div class="phone-frame reveal reveal-d2">
+      <div class="phone-shell">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-screen-content screen-green">
+            <div class="ps-icon">🔗</div>
+            <div class="ps-title">문장 만들기</div>
+            <div class="ps-desc">16레벨 + 6가지 게임으로 영작 실력 향상</div>
+            <div class="ps-mock-cards">
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-label">문장 만들기</div>
+    </div>
+    <div class="phone-frame reveal reveal-d3">
+      <div class="phone-shell">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-screen-content screen-purple">
+            <div class="ps-icon">📝</div>
+            <div class="ps-title">모의고사</div>
+            <div class="ps-desc">실전과 동일한 환경의 Full Test 시뮬레이션</div>
+            <div class="ps-mock-cards">
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+              <div class="ps-mock-card"><div class="ps-mock-dot"></div><div class="ps-mock-lines"><div class="ps-mock-line"></div><div class="ps-mock-line"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-label">모의고사</div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA Banner -->
 <section class="cta-banner">
   <div class="cta-content reveal">
-    <h2>목표 밴드, 지금 시작하세요</h2>
+    <h2>목표 밴드, 지금 시작하세��</h2>
     <p>배치 테스트로 현재 수준을 진단하고, 맞춤 학습을 시작합니다</p>
     <a href="https://play.google.com/store/apps/details?id=com.young.ielts_prep" class="btn-play-light" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.396 12l2.302-2.302zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
@@ -845,10 +2011,10 @@ footer a:hover { color: #fff; }
   <div class="pricing-grid">
     <div class="price-card reveal">
       <div class="plan-name">월간</div>
-      <div class="price en">₩6,900</div>
+      <div class="price en">&#8361;6,900</div>
       <div class="price-sub">매월 자동결제</div>
       <ul class="price-features">
-        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>모든 프리미엄 기능</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>모든 프리미엄 기��</li>
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>광고 제거</li>
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>언제든 해지 가능</li>
       </ul>
@@ -857,8 +2023,8 @@ footer a:hover { color: #fff; }
     <div class="price-card popular reveal reveal-d1">
       <div class="price-badge">가장 인기</div>
       <div class="plan-name">연간</div>
-      <div class="price en">₩49,900</div>
-      <div class="price-sub">월 ₩4,158 · 40% 절약</div>
+      <div class="price en">&#8361;49,900</div>
+      <div class="price-sub">월 &#8361;4,158 &middot; 40% 절약</div>
       <ul class="price-features">
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>모든 프리미엄 기능</li>
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>광고 제거</li>
@@ -869,11 +2035,11 @@ footer a:hover { color: #fff; }
     <div class="price-card reveal reveal-d2">
       <div class="price-badge" style="background:linear-gradient(135deg, #ea580c, #dc2626)">얼리버드</div>
       <div class="plan-name">평생</div>
-      <div class="price en">₩59,900</div>
-      <div class="price-original">정가 ₩69,900</div>
+      <div class="price en">&#8361;59,900</div>
+      <div class="price-original">정가 &#8361;69,900</div>
       <div class="price-sub">1회 결제, 영구 이용</div>
       <ul class="price-features">
-        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>모든 프리미엄 기능 영구</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>모든 ���리미엄 기능 영구</li>
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>향후 업데이트 포함</li>
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>장기 학습자에게 최적</li>
       </ul>
@@ -885,11 +2051,11 @@ footer a:hover { color: #fff; }
     <span class="eb-icon">⏰</span>
     <div class="eb-text">
       <strong>얼리버드 특가는 5월 말까지!</strong><br>
-      6월 1일부터 평생 이용권이 정가 ₩69,900으로 돌아갑니다.
+      6월 1일부터 평생 이용권이 정가 &#8361;69,900으로 돌아갑니다.
     </div>
   </div>
 
-  <p class="pricing-note">무료 다운로드 · 단어 학습 무제한 · 프리미엄 기능만 유료</p>
+  <p class="pricing-note">무료 다운로드 &middot; 단어 학습 무제한 &middot; 프리미엄 기능만 유료</p>
 </section>
 
 <!-- Footer -->
@@ -907,6 +2073,80 @@ footer a:hover { color: #fff; }
 </footer>
 
 <script>
+// ─── Nav scroll behavior ───
+const nav = document.getElementById('siteNav');
+const hamburger = document.getElementById('navHamburger');
+const mobileMenu = document.getElementById('navMobile');
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+
+function closeMobile() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+
+// ─── Daily Expression ───
+const WORDS = [
+  { word: "ubiquitous", pos: "adjective", band: "Band 7.0+", meaning: "어디에나 있는, 아주 흔한", en: "Social media has become ubiquitous in modern society.", ko: "소셜 미디어는 현대 사회에서 어디에나 존재하게 되었다." },
+  { word: "exacerbate", pos: "verb", band: "Band 7.0+", meaning: "악화시키다, 더 심하게 하다", en: "Climate change has exacerbated water shortages worldwide.", ko: "기후 변화는 전 세계적으로 물 부족을 악화시켰다." },
+  { word: "mitigate", pos: "verb", band: "Band 7.0+", meaning: "완화하다, 경감시키다", en: "The government took measures to mitigate the impact of inflation.", ko: "정부는 인플레이션의 영향을 완화하기 위한 조치를 취했다." },
+  { word: "unprecedented", pos: "adjective", band: "Band 6.5+", meaning: "전례 없는, 유례없는", en: "The pandemic caused an unprecedented disruption to global education.", ko: "팬데믹은 전 세계 교육에 전례 없는 혼란을 야기했다." },
+  { word: "detrimental", pos: "adjective", band: "Band 7.0+", meaning: "해로운, 유해한", en: "Excessive screen time can be detrimental to children's development.", ko: "과도한 스크린 타임은 아이들의 발달에 해로울 수 있다." },
+  { word: "fluctuate", pos: "verb", band: "Band 6.0+", meaning: "변동하다, 오르내리다", en: "Oil prices tend to fluctuate significantly during economic crises.", ko: "유가는 경제 위기 동안 크게 변동하는 경향이 있다." },
+  { word: "deteriorate", pos: "verb", band: "Band 6.5+", meaning: "악화되다, 나빠지다", en: "Air quality continues to deteriorate in many urban areas.", ko: "많은 도시 지역에서 공기 질이 계속 악화되고 있다." },
+  { word: "facilitate", pos: "verb", band: "Band 6.5+", meaning: "용이하게 하다, 촉진하다", en: "Technology can facilitate communication between different cultures.", ko: "기술은 서로 다른 문화 간의 소통을 촉진할 수 있다." },
+  { word: "substantial", pos: "adjective", band: "Band 6.0+", meaning: "상당한, 실질적인", en: "There has been a substantial increase in renewable energy investment.", ko: "재생 에너지 투자가 상당히 증가했다." },
+  { word: "prevalent", pos: "adjective", band: "Band 7.0+", meaning: "널리 퍼진, 유행하는", en: "Online shopping has become increasingly prevalent among young consumers.", ko: "온라인 쇼핑은 젊은 소비자들 사이에서 점점 더 널리 퍼지고 있다." },
+  { word: "ambiguous", pos: "adjective", band: "Band 7.0+", meaning: "모호한, 애매한", en: "The survey results were ambiguous and open to different interpretations.", ko: "설문 결과는 모호하여 다양한 해석이 가능했다." },
+  { word: "alleviate", pos: "verb", band: "Band 7.0+", meaning: "완화하다, 줄이다", en: "Regular exercise can help alleviate symptoms of depression.", ko: "규칙적인 운동은 우울증 증상을 완화하는 데 도움이 될 수 있다." },
+  { word: "paradox", pos: "noun", band: "Band 7.0+", meaning: "역설, 모순", en: "It is a paradox that richer nations often report lower happiness levels.", ko: "더 부유한 국가들이 종종 더 낮은 행복 수준을 보고하는 것은 역설이���." },
+  { word: "inevitable", pos: "adjective", band: "Band 6.5+", meaning: "불가피한, 필연적인", en: "Some degree of cultural change is inevitable in a globalised world.", ko: "세계화된 세상에서 어느 정도의 문화적 변화는 불가피하다." },
+  { word: "implement", pos: "verb", band: "Band 6.0+", meaning: "시행하다, 실행하다", en: "The school plans to implement a new assessment system next year.", ko: "학교는 내년에 새로운 평가 시스템을 시행할 계획이다." },
+  { word: "proliferate", pos: "verb", band: "Band 7.5+", meaning: "급속히 증가하다, 확산되다", en: "Fast food chains have proliferated across developing countries.", ko: "패스트푸드 체인점이 개발도상국 전역에 급속히 증가했다." },
+  { word: "versatile", pos: "adjective", band: "Band 7.0+", meaning: "다재다능한, 다용도의", en: "Bamboo is an incredibly versatile material used in construction and textiles.", ko: "대나무는 건설과 섬유에 사용되는 매우 다용도적인 소재이��." },
+  { word: "scrutinise", pos: "verb", band: "Band 7.5+", meaning: "면밀히 조사하다, 정밀 검토하다", en: "Researchers scrutinised the data to identify patterns in consumer behaviour.", ko: "연구자들은 소비자 행동의 패턴을 파악하기 위해 데이터를 면밀히 조사했다." },
+  { word: "undermine", pos: "verb", band: "Band 6.5+", meaning: "약화시키다, 훼손하다", en: "Corruption can undermine public trust in government institutions.", ko: "부패는 정부 기관에 대한 대중의 신뢰를 약화시킬 수 ��다." },
+  { word: "inherent", pos: "adjective", band: "Band 7.0+", meaning: "내재하는, 본질적인", en: "There are inherent risks in any form of investment.", ko: "어떤 형태의 투자에도 내재적인 위험이 있다." },
+  { word: "disparity", pos: "noun", band: "Band 7.0+", meaning: "격차, 불균형", en: "The disparity between rich and poor continues to widen globally.", ko: "부유층과 빈곤층 사이의 격차가 전 세계적으로 계속 벌어지고 있다." },
+  { word: "plausible", pos: "adjective", band: "Band 7.5+", meaning: "그럴듯한, 타당한", en: "The researcher proposed a plausible explanation for the unexpected results.", ko: "연구자는 예상치 못한 결과에 대해 그럴듯한 설명을 제시했다." },
+  { word: "conducive", pos: "adjective", band: "Band 7.0+", meaning: "도움이 되는, 이바지하는", en: "A quiet environment is more conducive to effective learning.", ko: "조용한 환경이 효과적인 학습에 더 도움이 된다." },
+  { word: "encompass", pos: "verb", band: "Band 7.0+", meaning: "포괄하다, 포함하다", en: "The study encompasses a wide range of socioeconomic factors.", ko: "이 연구는 광범위한 사회경제적 요인을 포괄한다." },
+  { word: "pragmatic", pos: "adjective", band: "Band 7.5+", meaning: "실용적인, 현실적인", en: "A pragmatic approach to environmental policy is needed.", ko: "환경 정책에 대한 실용적인 접근이 필요하다." },
+  { word: "susceptible", pos: "adjective", band: "Band 7.0+", meaning: "영향을 받기 쉬운, 취약한", en: "Young people are particularly susceptible to peer pressure.", ko: "젊은이들은 특히 또래 압력에 영향을 받기 쉽다." },
+  { word: "eradicate", pos: "verb", band: "Band 7.0+", meaning: "근절하다, 박멸하다", en: "Global efforts to eradicate poverty have made significant progress.", ko: "빈곤을 근절하기 위한 전 세계적 노력이 상당한 진전을 이루었다." },
+  { word: "diminish", pos: "verb", band: "Band 6.5+", meaning: "줄어들다, 감소하다", en: "The influence of traditional media has diminished with the rise of the internet.", ko: "전통 미디어의 영향력은 인터넷의 부상과 함께 줄어들었다." },
+  { word: "compelling", pos: "adjective", band: "Band 7.0+", meaning: "설득력 있는, 강렬한", en: "The documentary presented a compelling argument for conservation.", ko: "그 다큐멘터리는 보존에 대한 설득력 있는 논거를 제시했다." },
+  { word: "allocate", pos: "verb", band: "Band 6.5+", meaning: "배분하다, 할당하다", en: "The government should allocate more resources to public healthcare.", ko: "정부는 공공 의료에 더 많은 자원을 배분해야 한다." },
+];
+
+let currentWordIndex = new Date().getDate() % WORDS.length;
+
+function renderWord() {
+  const w = WORDS[currentWordIndex];
+  document.getElementById('dailyBand').textContent = w.band;
+  document.getElementById('dailyPos').textContent = w.pos;
+  document.getElementById('dailyWord').textContent = w.word;
+  document.getElementById('dailyMeaning').textContent = w.meaning;
+  document.getElementById('dailyExEn').textContent = '"' + w.en + '"';
+  document.getElementById('dailyExKo').textContent = w.ko;
+  document.getElementById('dailyCounter').textContent = (currentWordIndex + 1) + ' / ' + WORDS.length;
+}
+
+function changeWord(dir) {
+  currentWordIndex = (currentWordIndex + dir + WORDS.length) % WORDS.length;
+  renderWord();
+}
+
+renderWord();
+
+// ─── Reveal on scroll ───
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
